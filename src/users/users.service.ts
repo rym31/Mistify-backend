@@ -13,8 +13,20 @@ export class UsersService {
 
         return this.repo.create({email, password});
     }
+    findOne(id: number) {
+        return this.repo.findOneBy({id});
+    }
 
-    findAll() {
+    findAllUsers() {
         return this.repo.find();
     }
-}
+
+    async updateUser(id : number, attrs: Partial<User>) {
+        const user = await this.repo.findOneBy({id});
+        if (!user) {
+            //Lancer une erreur not found
+            return null;
+        }
+        Object.assign(user, attrs);
+        return this.repo.save(user);
+}}
