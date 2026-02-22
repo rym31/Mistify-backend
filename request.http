@@ -14,5 +14,20 @@ Content-Type: application/json
 ### Create user test 2
 POST http://localhost:3000/auth/signup
 Content-Type: application/json
-{ "email": "nassim25x@mail.com", "password": "mdp",
-  "name": "nassim"}
+
+{
+  "email": "nassim25x@mail.com",
+  "password": "mdp",
+  "name": "nassim"
+}
+
+
+### get info user id 2
+GET http://localhost:3000/auth/2
+
+### FAIRE PATCH
+
+
+### Delete user 2
+DELETE http://localhost:3000/auth/13
+
