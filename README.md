@@ -39,5 +39,3 @@ nest g service users
 x---put 'em on the news or somethin' (schyeah)---x
 ## ensuite faire les truc de la base de donner ! 
 x---------------------------x
-
-teste
