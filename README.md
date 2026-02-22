@@ -1,32 +1,4 @@
-
-The background color is `#ffffff` for light mode and `#000000` for dark mode.
-# ⚠️ CAN BE WRONG (NOT FINISHED)
 # 120mg  painKillers -> doing nun..
-
-<h1 style="background-color:black; color:red; padding:20px;">
-x---VaMP N1t3MaR3---x
-</h1>
-
-# ❗ERR0R T0 SOLVE❗
-## DANS **request.http**  APRES AVOIR FAIT <span style="color:red">Send Request</span> ca fait :
-```json
-HTTP/1.1 404 Not Found
-X-Powered-By: Express
-Content-Type: application/json; charset=utf-8
-Content-Length: 68
-ETag: W/"44-CzwRovJL2W1UfinZVuVq8Ud/d5w"
-Date: Sun, 22 Feb 2026 06:30:54 GMT
-Connection: close
-
-{
-  "message": "Cannot GET /users",
-  "error": "Not Found",
-  "statusCode": 404
-}
-```
-<h1 style="background-color:black; color:red; padding:20px;">
-x---------------------------x
-</h1>
 
 
 > ## Installation du projet!
@@ -45,7 +17,7 @@ publisher:"alexcvzz"
 ```
 
 <h1 style="background-color:black; color:red; padding:20px;">
-x---put 'em on the news or somethin' (schyeah)---x
+put 'em on the news or somethin' (schyeah)
 </h1>
 
 > ## T0 0PEN DATABASE !
@@ -77,7 +49,7 @@ x---------------------------x
 
 
 <h1 style="background-color:black; color:red; padding:20px;">
-x---CHr0m3 H34rt n3Rd Gl4ss3s---x
+CHr0m3 H34rt n3Rd Gl4ss3s
 </h1>
 
 # ▶️ Lancer le projet
@@ -104,3 +76,6 @@ nest g service users
 
 
 
+<h1 style="background-color:black; color:red; padding:20px;">
+VaMP N1t3MaR3
+</h1>
