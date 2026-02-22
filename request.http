@@ -8,7 +8,7 @@ Content-Type: application/json
  
  
 {
-    "email" : "sara@hotmail.com" ,
+    "email" : "yanis26x@mail.com" ,
     "password" : "mdp",
-    "name" : "sara"
+    "name" : "yanis"
 }
