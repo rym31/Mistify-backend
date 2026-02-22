@@ -12,26 +12,33 @@ npm install @nestjs/typeorm typeorm sqlite3
 ```
 #### Installer l’extension SQLite
 ```
-dans VScode
+dans VScode → SQLite
+publisher:"alexcvzz"
 ```
 
 
 x---put 'em on the news or somethin' (schyeah)---x
 > ## T0 0PEN DATABASE !
-### SUR MAC
+### SUR MAC 🍎
 ```
 SHIFT+CMD+P → SQLite: Open Database
 ```
 Affichage → Palette de commandes(SHIFT+CMD+P) → SQLite: Open Database
-### SUR WINDOWS
+### SUR WINDOWS 🪟
 ```
 CTRL+SHIFT+P → SQLite: Open Database
 ```
 VIEW → command palette(CTRL+SHIFT+P) → SQLite: Open Database
 
 ### ENSUITE :
+#### a la racine cree ce fichier
+```bash
+touch request.http
 ```
-a la racine du projet cree le fichier request.http
+#### Installer l’extension REST Client
+```
+dans VScode → REST Client 
+publisher:"Huachao Mao"
 ```
 x---------------------------x
 
