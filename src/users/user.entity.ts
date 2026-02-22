@@ -10,6 +10,8 @@ export class User {
   @Column()
   password: string;
 
+  // ajouter name !!!
+
   @AfterInsert()
   logInsert() {
     console.log(`Inserted user with id: ${this.id}`);

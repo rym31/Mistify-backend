@@ -4,14 +4,16 @@ import { AppService } from './app.service';
 import { UsersModule } from './users/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './users/user.entity';
+import { ParfumsModule } from './parfums/parfums.module';
+import { Parfum } from './parfums/parfum.entity';
  
 @Module({
   imports: [TypeOrmModule.forRoot({
     type:'sqlite',
     database : 'db.sqlite',
-    entities : [User],
+    entities : [User,Parfum],
     synchronize : true
-  }),UsersModule],
+  }),UsersModule, ParfumsModule],
   controllers: [AppController, ],
   providers: [AppService],
 })

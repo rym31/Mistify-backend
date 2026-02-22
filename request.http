@@ -1,6 +1,9 @@
 ### pour voir tout les users ! 
 GET http://localhost:3000/auth
  
+
+//AJOUTE NAME DANS ENTITY!!!!!!!!!!!!
+
 ### Create user test
 POST http://localhost:3000/auth/signup
 Content-Type: application/json
@@ -31,3 +34,46 @@ GET http://localhost:3000/auth/2
 ### Delete user 2
 DELETE http://localhost:3000/auth/13
 
+
+
+
+
+
+#################################PARDFUMNS TESTE#################################
+### Create parfum
+POST http://localhost:3000/parfums
+Content-Type: application/json
+
+{
+  "name": "Sauvage",
+  "brand": "Dior",
+  "price": 120
+}
+
+### Create parfum2
+POST http://localhost:3000/parfums
+Content-Type: application/json
+
+{
+  "name": "CHANELL",
+  "brand": "okok",
+  "price": 120
+}
+
+
+### Get all
+GET http://localhost:3000/parfums
+
+### Get one
+GET http://localhost:3000/parfums/1
+
+### Update
+PATCH http://localhost:3000/parfums/1
+Content-Type: application/json
+
+{
+  "price": 99
+}
+
+### Delete
+DELETE http://localhost:3000/parfums/1
