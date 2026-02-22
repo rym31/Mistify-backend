@@ -1,4 +1,4 @@
-# 120mg  painKillers -> doing nun..
+# 120mg  painKillers -> doing nun
 
 
 > ## Installation du projet!
