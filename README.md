@@ -44,11 +44,6 @@ publisher:"Huachao Mao"
 ```
 
 <h1 style="background-color:black; color:red; padding:20px;">
-x---------------------------x
-</h1>
-
-
-<h1 style="background-color:black; color:red; padding:20px;">
 CHr0m3 H34rt n3Rd Gl4ss3s
 </h1>
 
@@ -56,9 +51,7 @@ CHr0m3 H34rt n3Rd Gl4ss3s
 ```bash
 npm run start:dev
 ```
-<h1 style="background-color:black; color:red; padding:20px;">
-x---------------------------x
-</h1>
+
 
 > ## Générer les modules NestJS
 #### Créer le module users :
