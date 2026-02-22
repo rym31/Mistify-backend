@@ -1,0 +1,14 @@
+### test
+GET http://localhost:3000/users
+ 
+### Create user test
+ 
+POST http://localhost:3000/users
+Content-Type: application/json
+ 
+ 
+{
+    "email" : "sara@hotmail.com" ,
+    "password" : "mdp",
+    "name" : "sara"
+}
