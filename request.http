@@ -1,14 +1,18 @@
-### test
-GET http://localhost:3000/users
+### pour voir tout les users ! 
+GET http://localhost:3000/auth
  
 ### Create user test
- 
-POST http://localhost:3000/users
+POST http://localhost:3000/auth/signup
 Content-Type: application/json
- 
- 
+
 {
-    "email" : "yanis26x@mail.com" ,
-    "password" : "mdp",
-    "name" : "yanis"
+  "email": "yanis26x@mail.com",
+  "password": "mdp",
+  "name": "yanis"
 }
+
+### Create user test 2
+POST http://localhost:3000/auth/signup
+Content-Type: application/json
+{ "email": "nassim25x@mail.com", "password": "mdp",
+  "name": "nassim"}

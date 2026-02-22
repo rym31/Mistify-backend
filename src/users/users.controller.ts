@@ -9,12 +9,12 @@ export class UsersController {
 
     constructor(private service : UsersService){}
 
-    // @Get()
-    // getUsers() {
-    //     return this.service.findAll();
-    // }
+        @Get() // GET http://localhost:3000/auth
+        getUsers() {
+            return this.service.findAllUsers();
+        }
  
-    @Post("/signup")
+    @Post("/signup") //POST http://localhost:3000/auth/signup
     createUser(@Body() body: CreateUserDto) {
         console.log(body);
         return this.service.create(body.email, body.password);
