@@ -17,7 +17,7 @@ export class UsersController {
     @Post("/signup") //POST http://localhost:3000/auth/signup
     createUser(@Body() body: CreateUserDto) {
         console.log(body);
-        return this.service.create(body.email, body.password);
+        return this.service.create(body.name, body.email, body.password);
     }
 
     @Patch('/:id')
@@ -36,6 +36,11 @@ export class UsersController {
     deleteUser(@Param('id') id: string) {
         return this.service.removeUser(parseInt(id));
   }
+
+  @Delete() //DELETE http://localhost:3000/auth
+deleteAllUsers() {
+  return this.service.removeAllUsers();
+}
 
     
  

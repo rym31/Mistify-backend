@@ -9,6 +9,7 @@ npm i
 #### NaNa 0 HaTch1
 ```bash
 npm install @nestjs/typeorm typeorm sqlite3
+
 npm install -g @nestjs/cli
 ```
 #### Installer l’extension SQLite

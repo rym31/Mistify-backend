@@ -10,8 +10,8 @@ export class UsersService {
     private readonly repo: Repository<User>,
   ) {}
 
-  async create(email: string, password: string) {
-    const user = this.repo.create({ email, password });
+  async create(name: string, email: string, password: string) {
+    const user = this.repo.create({name, email, password });
     return this.repo.save(user);
   }
 
@@ -43,4 +43,14 @@ export class UsersService {
 
     return this.repo.remove(user);
   }
+
+  async removeAllUsers() {
+  const users = await this.repo.find();
+
+  if (users.length === 0) {
+    throw new NotFoundException('No users found');
+  }
+
+  return this.repo.remove(users);
+}
 }

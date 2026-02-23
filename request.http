@@ -9,9 +9,10 @@ POST http://localhost:3000/auth/signup
 Content-Type: application/json
 
 {
+  "name": "yanis",
   "email": "yanis26x@mail.com",
-  "password": "mdp",
-  "name": "yanis"
+  "password": "mdp"
+
 }
 
 ### Create user test 2
@@ -19,9 +20,9 @@ POST http://localhost:3000/auth/signup
 Content-Type: application/json
 
 {
+  "name": "nassim",
   "email": "nassim25x@mail.com",
-  "password": "mdp",
-  "name": "nassim"
+  "password": "mdp"
 }
 
 
@@ -32,7 +33,10 @@ GET http://localhost:3000/auth/2
 
 
 ### Delete user 2
-DELETE http://localhost:3000/auth/13
+DELETE http://localhost:3000/auth/1
+
+### Delete TOUT LES USERS
+DELETE http://localhost:3000/auth
 
 
 
