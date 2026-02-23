@@ -1,0 +1,17 @@
+### cree une offre (400 de base  on propose 5 lol)
+POST http://localhost:3000/annonces/2/offres
+Content-Type: application/json
+
+{
+  "amount": 5,
+  "buyerId": 6
+}
+
+### toute les offres pour lannnonce 2
+GET http://localhost:3000/annonces/2/offres
+
+### accepter loffre 1
+PATCH http://localhost:3000/offres/1/accept
+
+### refuser loffre 2
+PATCH http://localhost:3000/offres/1/refuser

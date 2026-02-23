@@ -1,6 +1,6 @@
 # 120mg  painKillers -> doing nun
 
-# USERS+PARFUMS+COMMENTAIRES+ANNONCES FAITTT!!!!!
+# USERS+PARFUMS+COMMENTAIRES+ANNONCES+OFFRES FAITTT!!!!!
 <h1 style="background-color:white; color:black; padding:20px;">
 request.http organiser dans le dossier zREQUEST en plusieur fichier .http !
 </h1>
