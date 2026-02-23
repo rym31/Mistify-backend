@@ -1,0 +1,18 @@
+# ------------------------------------------------ ANNONCES ----------------
+
+### CREE ANNONCES
+POST http://localhost:3000/annonces
+Content-Type: application/json
+
+{
+  "price": 400,
+  "description": "JE NEST SURTOUT PAS AJOUTER DE LEAU POUR LE VENDRE PLUS CHER ",
+  "sellerId": 6,
+  "parfumId": 2
+}
+
+### VOIR TOUTES LES ANNNCES!
+GET http://localhost:3000/annonces
+
+### SUPPRIMER UNE ANNONCE!
+DELETE  http://localhost:3000/annonces/1

@@ -8,13 +8,15 @@ import { ParfumsModule } from './parfums/parfums.module';
 import { Parfum } from './parfums/parfum.entity';
 import { CommentairesModule } from './commentaires/commentaires.module';
 import { Commentaire } from './commentaires/commentaire.entity';
+import { AnnoncesModule } from './annonces/annonces.module';
+import { Annonce } from './annonces/annonce.entity';
 @Module({
   imports: [TypeOrmModule.forRoot({
     type:'sqlite',
     database : 'db.sqlite',
-    entities : [User,Parfum, Commentaire],
+    entities : [User,Parfum, Commentaire,Annonce],
     synchronize : true
-  }),UsersModule, ParfumsModule, CommentairesModule],
+  }),UsersModule, ParfumsModule, CommentairesModule, AnnoncesModule],
   controllers: [AppController, ],
   providers: [AppService],
 })
