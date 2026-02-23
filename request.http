@@ -1,10 +1,9 @@
+# ------------------------------------------------ USERS ----------------
 ### pour voir tout les users ! 
 GET http://localhost:3000/auth
  
 
-//AJOUTE NAME DANS ENTITY!!!!!!!!!!!!
-
-### Create user test
+### cree user 1
 POST http://localhost:3000/auth/signup
 Content-Type: application/json
 
@@ -15,7 +14,7 @@ Content-Type: application/json
 
 }
 
-### Create user test 2
+### cree user test 2
 POST http://localhost:3000/auth/signup
 Content-Type: application/json
 
@@ -32,10 +31,10 @@ GET http://localhost:3000/auth/2
 ### FAIRE PATCH
 
 
-### Delete user 2
+### delete user 2
 DELETE http://localhost:3000/auth/1
 
-### Delete TOUT LES USERS
+### delete TOUT LES USERS
 DELETE http://localhost:3000/auth
 
 
@@ -43,8 +42,8 @@ DELETE http://localhost:3000/auth
 
 
 
-#################################PARDFUMNS TESTE#################################
-### Create parfum
+# ------------------------------------------------ PARFUMS ----------------
+### CREE parfum 1
 POST http://localhost:3000/parfums
 Content-Type: application/json
 
@@ -54,7 +53,7 @@ Content-Type: application/json
   "price": 120
 }
 
-### Create parfum2
+### CREE parfum2
 POST http://localhost:3000/parfums
 Content-Type: application/json
 
@@ -65,10 +64,10 @@ Content-Type: application/json
 }
 
 
-### Get all
+### voir TOUT les parfum
 GET http://localhost:3000/parfums
 
-### Get one
+### voir UN les parfum
 GET http://localhost:3000/parfums/1
 
 ### Update
@@ -81,3 +80,21 @@ Content-Type: application/json
 
 ### Delete
 DELETE http://localhost:3000/parfums/1
+
+# ------------------------------------------------ COMMENTAIRES ----------------
+
+### cree un comm
+POST http://localhost:3000/parfums/2/commentaires
+Content-Type: application/json
+
+{
+  "content": "c la premier x que je sent bon de ma vie!",
+  "rating": 5,
+  "userId": 6
+}
+
+### Get commentaires for parfum 2
+GET http://localhost:3000/parfums/2/commentaires
+
+### delete commentaire
+DELETE http://localhost:3000/commentaires/1
