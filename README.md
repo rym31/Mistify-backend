@@ -54,7 +54,7 @@ publisher:"Huachao Mao"
 CHr0m3 H34rt n3Rd Gl4ss3s
 </h1>
 
-# ▶️ Lancer le projet
+# Lancer le projet
 ```bash
 npm run start:dev
 ```
