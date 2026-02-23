@@ -1,4 +1,4 @@
-# 120mg  painKillers -> doing nun
+# 120mg + painKillers -> doing nun
 
 # USERS+PARFUMS+COMMENTAIRES+ANNONCES+OFFRES FAITTT!!!!!
 <h1 style="background-color:white; color:black; padding:20px;">
@@ -28,12 +28,12 @@ put 'em on the news or somethin' (schyeah)
 </h1>
 
 > ## T0 0PEN DATABASE !
-### SUR MAC 🍎
+### SUR MAC
 ```
 SHIFT+CMD+P → SQLite: Open Database
 ```
 Affichage → Palette de commandes(SHIFT+CMD+P) → SQLite: Open Database
-### SUR WINDOWS 🪟
+### SUR WINDOWS
 ```
 CTRL+SHIFT+P → SQLite: Open Database
 ```
@@ -67,11 +67,11 @@ nest g module users
 ```
 #### Créer le controller :
 ```bash
-nest g controller users
+nest g controller users --no-spec
 ```
 #### Créer le service :
 ```bash
-nest g service users
+nest g service users --no-spec
 ```
 
 
