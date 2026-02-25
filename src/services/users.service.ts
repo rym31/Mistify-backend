@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import {User} from './user.entity';
+import {User} from '../users/user.entity';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 
@@ -30,3 +30,5 @@ export class UsersService {
         Object.assign(user, attrs);
         return this.repo.save(user);
 }}
+
+

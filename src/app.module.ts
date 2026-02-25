@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { UsersModule } from './users/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './users/user.entity';
+import { AuthService } from './services/auth.service';
  
 @Module({
   imports: [TypeOrmModule.forRoot({
@@ -13,7 +14,7 @@ import { User } from './users/user.entity';
     synchronize : true
   }),UsersModule],
   controllers: [AppController, ],
-  providers: [AppService],
+  providers: [AppService, AuthService],
 })
 export class AppModule {}
  
