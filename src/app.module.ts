@@ -23,4 +23,3 @@ import { Offre } from './offres/offre.entity';
   providers: [AppService],
 })
 export class AppModule {}
- 

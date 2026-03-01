@@ -2,6 +2,7 @@ import { Body, Controller, Post, Get, Patch, Param, Delete } from '@nestjs/commo
 import { UsersService } from './users.service';
 import { CreateUserDto } from '../dtos/create-user.dto';
 import { UpdateUserDto} from '../dtos/update-user.dto'
+import { AuthService } from 'src/auth.service';
 
 
 @Controller('auth')
@@ -18,7 +19,15 @@ export class UsersController {
     createUser(@Body() body: CreateUserDto) {
         console.log(body);
         return this.service.create(body.name, body.email, body.password);
+        // return this.AuthService.signup((body.name, body.email, body.password);
     }
+
+    @Post("/signin") //POST http://localhost:3000/auth/signup
+    // a faire !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+
+    
 
     @Patch('/:id')
     updateUser(@Param('id') id : string, @Body() body : UpdateUserDto){
@@ -41,6 +50,10 @@ export class UsersController {
 deleteAllUsers() {
   return this.service.removeAllUsers();
 }
+
+
+
+
 
     
  
