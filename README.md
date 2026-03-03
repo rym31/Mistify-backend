@@ -2,7 +2,11 @@
 
 # USERS+PARFUMS+COMMENTAIRES+ANNONCES+OFFRES FAITTT!!!!!
 <h1 style="background-color:white; color:black; padding:20px;">
-request.http organiser dans le dossier zREQUEST en plusieur fichier .http !
+jsp on lutilise quand et pk mais la prof a fait cette commande... INFORME TOOI SUR CA SERT A QUOI !
+
+```bash
+npm install cookie-session @types/cookie-session
+```
 </h1>
 
 
@@ -79,3 +83,4 @@ nest g service users --no-spec
 <h1 style="background-color:black; color:red; padding:20px;">
 VaMP N1t3MaR3
 </h1>
+

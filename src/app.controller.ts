@@ -7,7 +7,4 @@ export class AppController {
     throw new Error('Method not implemented.');
   }
 
-
-  
-
 }

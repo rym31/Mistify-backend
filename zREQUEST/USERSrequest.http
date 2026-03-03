@@ -9,10 +9,21 @@ Content-Type: application/json
 
 {
   "name": "yanis",
-  "email": "yanis26x@mail.com",
+  "email": "yanis@test.com",
   "password": "mdp"
 
 }
+
+
+### pour signIN
+POST http://localhost:3000/auth/signin
+Content-Type: application/json
+
+{
+  "email": "yanis@test.com",
+  "password": "mdp"
+}
+
 
 ### cree user test 2
 POST http://localhost:3000/auth/signup
