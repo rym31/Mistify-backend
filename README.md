@@ -1,13 +1,17 @@
-# 120mg + painKillers -> doing nun
+# @yanis26x
 
-# USERS+PARFUMS+COMMENTAIRES+ANNONCES+OFFRES FAITTT!!!!!
-<h1 style="background-color:white; color:black; padding:20px;">
-jsp on lutilise quand et pk mais la prof a fait cette commande... INFORME TOOI SUR CA SERT A QUOI !
+<div align="center">
 
-```bash
-npm install cookie-session @types/cookie-session
-```
-</h1>
+<h1 align="center">y0 l3s fIlLeS ! mTn t0uT mArCh3 , c’E3T b0n !!</h1>
+
+<H2 align="center">
+CONTINUEZ À CODER À PARTIR DE CE CODE  <br>
+QU'EST-CE QUE VOUS FEREZ SANS MOI S3RIEUX?!! <br>
+REMERCIEZ MOI SURTOUT PAS EIN! 
+  <h1>sI v0uS aVeZ dEs qUeStI0nS 0u jSp qU0i , 3cRiVeZ m0i @yanis26x</h1>
+</H2>
+
+</div>
 
 
 > ## Installation du projet!
@@ -84,3 +88,9 @@ nest g service users --no-spec
 VaMP N1t3MaR3
 </h1>
 
+
+a installer ????
+```bash
+npm install cookie-session @types/cookie-session
+```
+# 120mg + painKillers -> doing nun
