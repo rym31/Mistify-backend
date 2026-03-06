@@ -13,6 +13,10 @@ REMERCIEZ MOI SURTOUT PAS EIN!
 
 </div>
 
+## jai fait le frontend : https://github.com/yanis26x/Mistify-frontend
+### lanceZ le backend et le frontend enssemble et le frontend va marcher
+#### ALLEZ VOIR FRONTEND ET LIRE LE README 
+
 
 > ## Installation du projet!
 #### NaNa 0 HaTch1
