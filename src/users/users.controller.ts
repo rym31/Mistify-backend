@@ -74,7 +74,7 @@ whoAmI(@Session() session: any) {
 }
 
   @Patch('/:id')
-  @UseGuards(AuthGuard)
+  @UseGuards(AuthGuard,AdminGuard)
   updateUser(@Param('id') id: string, @Body() body: UpdateUserDto) {
     return this.service.updateUser(parseInt(id), body);
   }
@@ -94,7 +94,7 @@ deleteUser(@Param('id') id: string) {
 }
 
   @Delete() // DELETE http://localhost:3000/auth
-  @UseGuards(AuthGuard)
+  @UseGuards(AuthGuard,AdminGuard)
   deleteAllUsers() {
     return this.service.removeAllUsers();
   }

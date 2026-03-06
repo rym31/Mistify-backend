@@ -6,7 +6,6 @@ import cookieSession from 'cookie-session';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  // Validation des DTO
   app.useGlobalPipes(
     new ValidationPipe({
       whitelist: true,
@@ -15,10 +14,9 @@ async function bootstrap() {
     }),
   );
 
-  // Session middleware
   app.use(
     cookieSession({
-      keys: ['super-secret-key'],
+      keys: ['super-secret-key'], //??????????
     }),
   );
 

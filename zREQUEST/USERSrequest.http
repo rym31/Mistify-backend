@@ -2,25 +2,23 @@
 ### pour voir tout les users ! 
 GET http://localhost:3000/auth
  
-
-### cree user 1
+### cree user (change admin a true ou false dans user.entity) (pas admin en bas)
 POST http://localhost:3000/auth/signup
 Content-Type: application/json
 
 {
   "name": "yanis",
-  "email": "yanis26x@test.com",
+  "email": "yanis26x@hotmail.com",
   "password": "mdp"
 
 }
 
-
-### pour signIN
+### pour signIN en admin
 POST http://localhost:3000/auth/signin
 Content-Type: application/json
 
 {
-  "email": "yanis26x@test.com",
+  "email": "yanis26x@hotmail.com",
   "password": "mdp"
 }
 
@@ -30,40 +28,30 @@ POST http://localhost:3000/auth/signout
 ###pour savoir tes qui 
 GET http://localhost:3000/auth/whoami
 
-
-
-
-
-
-### get info user id 2
-GET http://localhost:3000/auth/2
-
-### FAIRE PATCH
-
-
-### delete user 2
-DELETE http://localhost:3000/auth/11
+### delete user
+DELETE http://localhost:3000/auth/6
 
 ### delete TOUT LES USERS
 DELETE http://localhost:3000/auth
 
+### get info user id 
+GET http://localhost:3000/auth/2
 
+### FAIRE PATCH
 
-
-
-//---------teste--------------------
-### cree user test 2
+//---------PAS ADMIN--------------------
+### cree user pas admin (change admin a true ou false dans user.entity)
 POST http://localhost:3000/auth/signup
 Content-Type: application/json
 
 {
-  "name": "pasAdmon",
+  "name": "pasAdmin",
   "email": "noAdmin@mail.com",
   "password": "mdp"
 }
 
 
-### pour signIN
+### pour signIN en pas admin
 POST http://localhost:3000/auth/signin
 Content-Type: application/json
 
@@ -72,3 +60,16 @@ Content-Type: application/json
   "password": "mdp"
 }
 
+
+
+
+
+### cree user pas admin (change admin a true ou false dans user.entity)
+POST http://localhost:3000/auth/signup
+Content-Type: application/json
+
+{
+  "name": "sara",
+  "email": "sara@test.com",
+  "password": "mdp"
+}

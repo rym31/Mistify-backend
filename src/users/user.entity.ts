@@ -14,11 +14,11 @@ export class User {
   @Column()
   password: string;
 
-  @Column({default:true})
+  @Column({default:false}) //A CHANGER
   admin:boolean;
 
   @AfterInsert()
   logInsert() {
-    console.log(`Inserted user with id: ${this.id}`);
+    console.log(`(・・?) Nouvel utilisateur ajouté w0w! ID: ${this.id}`);
 }
 }
