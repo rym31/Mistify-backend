@@ -1,11 +1,14 @@
-import { Body, Controller, Post, Get, Patch, Param, Delete } from '@nestjs/common';
+import { Body, Controller, Post, Get, Patch, Param, Delete, UseGuards } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { AuthService } from './auth.service';
 import { CreateUserDto } from '../dtos/create-user.dto';
 import { UpdateUserDto } from '../dtos/update-user.dto';
 import { SigninDto } from '../dtos/signin.dto';
+import { AuthGuard } from 'src/guards/auth.guards';
+import { AdminGuards } from 'src/guards/admin.guards';
 
 @Controller('auth')
+// @UseGuards(AuthGuard)
 export class UsersController {
   constructor(
     private service: UsersService,
@@ -32,11 +35,16 @@ export class UsersController {
     return this.service.updateUser(parseInt(id), body);
   }
 
+  @UseGuards(AdminGuards)
   @Get('/:id') // GET http://localhost:3000/auth/2
   getUser(@Param('id') id: string) {
     return this.service.findOne(parseInt(id));
   }
 
+
+  // logger. mettre le bom 
+
+  @UseGuards(AdminGuards)
   // FAIRE QUE SEULEMENT ADMIN!!!!!!!!!!!!!!!!
   @Delete('/:id') // DELETE http://localhost:3000/auth/2
   deleteUser(@Param('id') id: string) {
