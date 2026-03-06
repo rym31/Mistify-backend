@@ -8,8 +8,8 @@ POST http://localhost:3000/auth/signup
 Content-Type: application/json
 
 {
-  "name": "sara",
-  "email": "sara5@test.com",
+  "name": "yanis",
+  "email": "yanis26x@test.com",
   "password": "mdp"
 
 }
@@ -20,20 +20,19 @@ POST http://localhost:3000/auth/signin
 Content-Type: application/json
 
 {
-  "email": "sara5@test.com",
+  "email": "yanis26x@test.com",
   "password": "mdp"
 }
 
+### pour signOUT
+POST http://localhost:3000/auth/signout
 
-### cree user test 2
-POST http://localhost:3000/auth/signup
-Content-Type: application/json
+###pour savoir tes qui 
+GET http://localhost:3000/auth/whoami
 
-{
-  "name": "nassim",
-  "email": "nassim25x@mail.com",
-  "password": "mdp"
-}
+
+
+
 
 
 ### get info user id 2
@@ -47,3 +46,29 @@ DELETE http://localhost:3000/auth/11
 
 ### delete TOUT LES USERS
 DELETE http://localhost:3000/auth
+
+
+
+
+
+//---------teste--------------------
+### cree user test 2
+POST http://localhost:3000/auth/signup
+Content-Type: application/json
+
+{
+  "name": "pasAdmon",
+  "email": "noAdmin@mail.com",
+  "password": "mdp"
+}
+
+
+### pour signIN
+POST http://localhost:3000/auth/signin
+Content-Type: application/json
+
+{
+  "email": "noAdmin@mail.com",
+  "password": "mdp"
+}
+

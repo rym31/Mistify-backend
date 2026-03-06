@@ -17,8 +17,6 @@ export class User {
   @Column({default:true})
   admin:boolean;
 
-  // ajouter name !!!
-
   @AfterInsert()
   logInsert() {
     console.log(`Inserted user with id: ${this.id}`);
