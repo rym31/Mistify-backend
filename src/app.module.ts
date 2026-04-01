@@ -12,14 +12,26 @@ import { AnnoncesModule } from './annonces/annonces.module';
 import { Annonce } from './annonces/annonce.entity';
 import { OffresModule } from './offres/offres.module';
 import { Offre } from './offres/offre.entity';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
 @Module({
-  imports: [TypeOrmModule.forRoot({
-    type:'sqlite',
-    database : 'db.sqlite',
-    entities : [User,Parfum, Commentaire,Annonce, Offre],
-    synchronize : true
-  }),UsersModule, ParfumsModule, CommentairesModule, AnnoncesModule, OffresModule],
-  controllers: [AppController, ],
+  imports: [
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..', 'public'),
+    }),
+    TypeOrmModule.forRoot({
+      type:'sqlite',
+      database : 'db.sqlite',
+      entities : [User,Parfum, Commentaire,Annonce, Offre],
+      synchronize : true
+    }),
+    UsersModule,
+    ParfumsModule,
+    CommentairesModule,
+    AnnoncesModule,
+    OffresModule
+  ],
+  controllers: [AppController],
   providers: [AppService],
 })
 export class AppModule {}
