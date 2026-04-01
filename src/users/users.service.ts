@@ -2,6 +2,7 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { User } from './user.entity';
+import { SearchUserParam } from 'src/utils/types';
 
 @Injectable()
 export class UsersService {
@@ -22,6 +23,10 @@ export class UsersService {
 
   async findOne(id: number) {
     return this.repo.findOne({ where: { id } });
+  }
+
+  async findUser(params: SearchUserParam) {
+    return this.repo.findOneBy(params);
   }
 
   async findAllUsers() {
