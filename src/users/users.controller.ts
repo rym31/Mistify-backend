@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import {
   Body,
   Controller,
@@ -18,16 +17,6 @@ import { UpdateUserDto } from '../dtos/update-user.dto';
 import { SigninDto } from '../dtos/signin.dto';
 import { AuthGuard } from 'src/guards/auth.guards';
 import { AdminGuard } from 'src/guards/admin.guards';
-=======
-import { Body, Controller, Post, Get, Patch, Param, ClassSerializerInterceptor, UseInterceptors } from '@nestjs/common';
-import { UsersService } from '../services/users.service';
-import { CreateUserDto } from '../dtos/create-user.dto';
-import { UpdateUserDto } from 'src/dtos/update-user.dto';
-// import { UseInterceptors } from '@nestjs/common';
-import { SerializeInterceptor } from 'src/interceptors/serialize.interceptor';
-import { UserDto } from 'src/dtos/user.dto';
-import { Serialize } from 'src/interceptors/serialize.interceptor';
->>>>>>> 83a6d7bc20f4a6797f2c41d0fd7b8236f4decaf2
 
 @Controller('users')
 export class UsersController {
@@ -41,7 +30,6 @@ export class UsersController {
     return this.service.findAllUsers();
   }
 
-<<<<<<< HEAD
   @Post('/signup') // POST http://localhost:3000/auth/signup
   async signup(@Body() body: CreateUserDto, @Session() session: any) {
 
@@ -71,19 +59,18 @@ export class UsersController {
     return user;
   }
 
-
   @Post('/signout') // POST http://localhost:3000/auth/signout
-signout(@Session() session: any) {
-  session.userId = null;
-  return { message: 'tu est deco, by3...!' };
-}
+  signout(@Session() session: any) {
+    session.userId = null;
+    return { message: 'tu est deco, by3...!' };
+  }
 
-//pr savoir tes qui
-@UseGuards(AuthGuard)
-@Get('/whoami')
-whoAmI(@Session() session: any) {
-  return this.service.findOne(session.userId);
-}
+  //pr savoir tes qui
+  @UseGuards(AuthGuard)
+  @Get('/whoami')
+  whoAmI(@Session() session: any) {
+    return this.service.findOne(session.userId);
+  }
 
   @Patch('/:id')
   @UseGuards(AuthGuard,AdminGuard)
@@ -97,51 +84,15 @@ whoAmI(@Session() session: any) {
     return this.service.findOne(parseInt(id));
   }
 
-
-  
-@UseGuards(AuthGuard, AdminGuard)
-@Delete('/:id')
-deleteUser(@Param('id') id: string) {
-  return this.service.removeUser(parseInt(id));
-}
+  @UseGuards(AuthGuard, AdminGuard)
+  @Delete('/:id')
+  deleteUser(@Param('id') id: string) {
+    return this.service.removeUser(parseInt(id));
+  }
 
   @Delete() // DELETE http://localhost:3000/auth
   @UseGuards(AuthGuard,AdminGuard)
   deleteAllUsers() {
     return this.service.removeAllUsers();
   }
-=======
-        @Get()
-        getUsers() {
-            return this.service.findAllUsers();
-        }
- 
-    @Post("/signup")
-    createUser(@Body() body: CreateUserDto) {
-        console.log(body);
-        return this.service.create(body.email, body.password);
-    }
-
-    @Patch("/:id")
-    updateUser(@Param("id") id: string, @Body() body: Partial<CreateUserDto>) {
-        return this.service.updateUser(parseInt(id), body);
-    }
-
-    // @UseInterceptors(ClassSerializerInterceptor)
-    // @UseInterceptors(new SerializeInterceptor(UserDto))
-    @Serialize(UserDto) 
-    @Get("/:id")
-    findUser(@Param("id") id: string) {
-        console.log("handler is running");
-        return this.service.findOne(parseInt(id));
-    }
-
-    @Get()
-    findAllUsers() {
-    return this.service.findAllUsers();
-}
-
-    
- 
->>>>>>> 83a6d7bc20f4a6797f2c41d0fd7b8236f4decaf2
 }
