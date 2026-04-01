@@ -1,4 +1,10 @@
+<<<<<<< HEAD:src/users/users.service.ts
 import { Injectable, NotFoundException } from '@nestjs/common';
+=======
+import { Injectable } from '@nestjs/common';
+import {User} from '../users/user.entity';
+import { Repository } from 'typeorm';
+>>>>>>> 83a6d7bc20f4a6797f2c41d0fd7b8236f4decaf2:src/services/users.service.ts
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { User } from './user.entity';
@@ -34,7 +40,11 @@ export class UsersService {
     if (!user) {
       throw new NotFoundException('User n0t f0und....');
     }
+    findOne(id: number) {
+        return this.repo.findOneBy({id});
+    }
 
+<<<<<<< HEAD:src/users/users.service.ts
     Object.assign(user, attrs);
     return this.repo.save(user);
   }
@@ -59,3 +69,20 @@ export class UsersService {
   return this.repo.remove(users);
 }
 }
+=======
+    findAllUsers() {
+        return this.repo.find();
+    }
+
+    async updateUser(id : number, attrs: Partial<User>) {
+        const user = await this.repo.findOneBy({id});
+        if (!user) {
+            //Lancer une erreur not found
+            return null;
+        }
+        Object.assign(user, attrs);
+        return this.repo.save(user);
+}}
+
+
+>>>>>>> 83a6d7bc20f4a6797f2c41d0fd7b8236f4decaf2:src/services/users.service.ts
