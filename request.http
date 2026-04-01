@@ -1,0 +1,11 @@
+### Requêtes
+
+
+POST http://localhost:3000/users/
+Content-Type: application/json
+
+{
+    "email": "ellyn@gmail.com",
+    "password": "mdp",
+    "name": "e"
+}
