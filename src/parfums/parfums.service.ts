@@ -5,7 +5,8 @@ import { Parfum } from './parfum.entity';
 
 @Injectable()
 export class ParfumsService {
-  constructor(@InjectRepository(Parfum) private repo: Repository<Parfum>) {}
+  constructor(@InjectRepository(Parfum) private repo: Repository<Parfum>,
+              @InjectRepository(DemandeParfum) private repoDemande: Repository<Demande>) {}
 
   create(attrs: Partial<Parfum>) {
     const parfum = this.repo.create(attrs);
@@ -31,5 +32,19 @@ export class ParfumsService {
     const parfum = await this.repo.findOne({ where: { id } });
     if (!parfum) throw new NotFoundException('Parfum not found');
     return this.repo.remove(parfum);
+  }
+
+  async demande(attrs: Partial<Parfum>, name: string, ) {
+    // find by name + tableaux de demandes -> valider
+    
+    const parfumName = await this.repo.findOne({where: { name }});
+    if(!parfumName) {
+      const parfum = this.repo.create(attrs);
+      return await this.repo.save(parfum);
+    }
+  }
+
+  validate(){
+
   }
 }
