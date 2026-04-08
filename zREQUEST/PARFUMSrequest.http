@@ -14,9 +14,11 @@ POST http://localhost:3000/parfums
 Content-Type: application/json
 
 {
-  "name": "CHANELL",
-  "brand": "okok",
-  "price": 120
+  "name": "COCO Mademoiselle",
+  "brand": "Chanel",
+  "price": 180,
+  "description": "best one in the game",
+  "imageUrl": "https://www.holtrenfrew.com/fr/Produits/Femmes/Beaut%C3%A9/Fragrances/Parfums/CHANEL-Eau-de-parfum-Intense-vaporisateur/p/20061457002?srsltid=AfmBOook8S4QXZs-KPnGQatqlbBWmzMN7fkoCgRscFHRZE3Vx5ABmOjM"
 }
 
 
@@ -24,10 +26,10 @@ Content-Type: application/json
 GET http://localhost:3000/parfums
 
 ### voir UN les parfum
-GET http://localhost:3000/parfums/1
+GET http://localhost:3000/parfums/5
 
 ### Update
-PATCH http://localhost:3000/parfums/1
+PATCH http://localhost:3000/parfums/5
 Content-Type: application/json
 
 {
@@ -35,4 +37,4 @@ Content-Type: application/json
 }
 
 ### Delete
-DELETE http://localhost:3000/parfums/1
+DELETE http://localhost:3000/parfums/4

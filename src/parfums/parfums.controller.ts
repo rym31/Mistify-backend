@@ -31,13 +31,8 @@ export class ParfumsController {
   remove(@Param('id') id: string) {
     return this.service.remove(parseInt(id));
   }
-  // demande + validation
-  // modif/ ajouter form -> BD
-  @Get()
-  demandeParfum(@Body() body: CreateParfumDto) {
-    return this.service.demande(body, body.name);
-  }
-  @
+  
+  
 
   
 }

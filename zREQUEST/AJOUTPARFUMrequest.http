@@ -1,0 +1,8 @@
+### AjoutParfum
+POST http://localhost:3000/ajout/ajouter
+Content-Type: application/json
+
+{
+    "name": "Fruité",
+    "brand": "Caliente"
+}
