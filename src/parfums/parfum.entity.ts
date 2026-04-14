@@ -18,7 +18,7 @@ export class Parfum {
   imageUrl?: string;
 
   @Column({ type: 'float' })
-  price?: number; // a enlever
+  price?: number;
 
   @Column({ nullable: true })
   country?: string;

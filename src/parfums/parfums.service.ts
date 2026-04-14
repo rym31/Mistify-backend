@@ -32,4 +32,21 @@ export class ParfumsService {
     if (!parfum) throw new NotFoundException('Parfum not found');
     return this.repo.remove(parfum);
   }
+
+  async filterByGender(gender: string) {
+    return this.repo.find({ where: { gender } });
+  }
+
+  async filterByYear(year: number) {
+    return this.repo.find({ where: { year } });
+  }
+  
+  async filterByPrice(price: number){
+    return this.repo.find({ where: { price } });
+
+  }
+
+
+
+
 }

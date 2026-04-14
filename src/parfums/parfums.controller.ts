@@ -31,4 +31,19 @@ export class ParfumsController {
   remove(@Param('id') id: string) {
     return this.service.remove(parseInt(id));
   }
+
+  @Get('/filter/gender/:gender')
+  filterByGender(@Param('gender') gender: string) {
+    return this.service.filterByGender(gender);
+  }
+
+  @Get('/filter/year/:year')
+  filterByYear(@Param('year') year: string) {
+    return this.service.filterByYear(parseInt(year));
+  }
+
+  @Get('/filter/price/:price')
+  filterByPrice(@Param('price') price: string) {
+    return this.service.filterByPrice(parseFloat(price));
+  }
 }

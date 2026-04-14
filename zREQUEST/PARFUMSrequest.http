@@ -36,3 +36,13 @@ Content-Type: application/json
 
 ### Delete
 DELETE http://localhost:3000/parfums/1
+
+### Filtrer par price
+GET http://localhost:3000/parfums/filter/price=200
+
+### Filtrer par year
+GET http://localhost:3000/parfums/filter/:year=2020
+
+### Filtrer par gender
+GET http://localhost:3000/parfums/filter/gender/Homme
+
