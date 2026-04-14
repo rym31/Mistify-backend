@@ -9,10 +9,10 @@ export class AjoutParfumController {
 
     // demande + validation
     // modif/ ajouter form -> BD
-    @Post('/ajouter')
-    ajouterParfum(@Body() body: CreateAjoutParfumDto) {
+    @Post()
+    async ajouterParfum(@Body() body: CreateAjoutParfumDto) {
         console.log("here");
-        return this.service.ajouter(body);
+        return await this.service.ajouter(body);
         
     }
 }

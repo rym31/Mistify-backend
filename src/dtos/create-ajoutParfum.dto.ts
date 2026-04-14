@@ -9,4 +9,8 @@ export class CreateAjoutParfumDto {
   @IsString()
   @IsNotEmpty()
   brand: string;
+
+  @IsString()
+  @IsNotEmpty()
+  userId: string;
 }
