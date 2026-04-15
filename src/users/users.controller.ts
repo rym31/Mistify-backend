@@ -59,19 +59,18 @@ export class UsersController {
     return user;
   }
 
-
   @Post('/signout') // POST http://localhost:3000/auth/signout
-signout(@Session() session: any) {
-  session.userId = null;
-  return { message: 'tu est deco, by3...!' };
-}
+  signout(@Session() session: any) {
+    session.userId = null;
+    return { message: 'Tu as été déconnecté de ta session.' };
+  }
 
-//pr savoir tes qui
-@UseGuards(AuthGuard)
-@Get('/whoami')
-whoAmI(@Session() session: any) {
-  return this.service.findOne(session.userId);
-}
+  //pr savoir tes qui .....
+  @UseGuards(AuthGuard)
+  @Get('/whoami')
+  whoAmI(@Session() session: any) {
+    return this.service.findOne(session.userId);
+  }
 
   @Patch('/:id')
   @UseGuards(AuthGuard,AdminGuard)
@@ -87,11 +86,11 @@ whoAmI(@Session() session: any) {
 
 
   
-@UseGuards(AuthGuard, AdminGuard)
-@Delete('/:id')
-deleteUser(@Param('id') id: string) {
-  return this.service.removeUser(parseInt(id));
-}
+  @UseGuards(AuthGuard, AdminGuard)
+  @Delete('/:id')
+  deleteUser(@Param('id') id: string) {
+    return this.service.removeUser(parseInt(id));
+  }
 
   @Delete() // DELETE http://localhost:3000/auth
   @UseGuards(AuthGuard,AdminGuard)
