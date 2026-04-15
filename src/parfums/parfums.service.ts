@@ -43,10 +43,5 @@ export class ParfumsService {
   
   async filterByPrice(price: number){
     return this.repo.find({ where: { price } });
-
   }
-
-
-
-
 }

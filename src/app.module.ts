@@ -14,6 +14,8 @@ import { OffresModule } from './offres/offres.module';
 import { Offre } from './offres/offre.entity';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
+import { ContactsModule } from './contacts/contacts.module';
+import { Contacts } from './contacts/contacts.entity';
 
 @Module({
   imports: [
@@ -23,14 +25,15 @@ import { join } from 'path';
     TypeOrmModule.forRoot({
       type:'sqlite',
       database : 'db.sqlite',
-      entities : [User,Parfum, Commentaire,Annonce, Offre],
+      entities : [User,Parfum, Commentaire,Annonce, Offre, Contacts],
       synchronize : true
     }),
     UsersModule,
     ParfumsModule,
     CommentairesModule,
     AnnoncesModule,
-    OffresModule
+    OffresModule,
+    ContactsModule
   ],
   controllers: [AppController],
   providers: [AppService],
