@@ -10,8 +10,8 @@ import {
   Session,
 } from '@nestjs/common';
 
-import { UsersService } from './users.service';
-import { AuthService } from './auth.service';
+import { UsersService } from './services/users.service';
+import { AuthService } from './services/auth.service';
 import { CreateUserDto } from '../dtos/create-user.dto';
 import { UpdateUserDto } from '../dtos/update-user.dto';
 import { SigninDto } from '../dtos/signin.dto';
