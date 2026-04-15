@@ -10,15 +10,20 @@ import {
   Session,
 } from '@nestjs/common';
 
+<<<<<<< HEAD
+import { UsersService } from '../services/users.service';
+import { AuthService } from './auth.service';
+=======
 import { UsersService } from './services/users.service';
 import { AuthService } from './services/auth.service';
+>>>>>>> dee21a8a646b9d51b06cc18cd1d0de6be3a2caaa
 import { CreateUserDto } from '../dtos/create-user.dto';
 import { UpdateUserDto } from '../dtos/update-user.dto';
 import { SigninDto } from '../dtos/signin.dto';
 import { AuthGuard } from 'src/guards/auth.guards';
 import { AdminGuard } from 'src/guards/admin.guards';
 
-@Controller('auth')
+@Controller('users')
 export class UsersController {
   constructor(
     private service: UsersService,
@@ -59,19 +64,18 @@ export class UsersController {
     return user;
   }
 
-
   @Post('/signout') // POST http://localhost:3000/auth/signout
-signout(@Session() session: any) {
-  session.userId = null;
-  return { message: 'tu est deco, by3...!' };
-}
+  signout(@Session() session: any) {
+    session.userId = null;
+    return { message: 'tu est deco, by3...!' };
+  }
 
-//pr savoir tes qui
-@UseGuards(AuthGuard)
-@Get('/whoami')
-whoAmI(@Session() session: any) {
-  return this.service.findOne(session.userId);
-}
+  //pr savoir tes qui
+  @UseGuards(AuthGuard)
+  @Get('/whoami')
+  whoAmI(@Session() session: any) {
+    return this.service.findOne(session.userId);
+  }
 
   @Patch('/:id')
   @UseGuards(AuthGuard,AdminGuard)
@@ -85,13 +89,11 @@ whoAmI(@Session() session: any) {
     return this.service.findOne(parseInt(id));
   }
 
-
-  
-@UseGuards(AuthGuard, AdminGuard)
-@Delete('/:id')
-deleteUser(@Param('id') id: string) {
-  return this.service.removeUser(parseInt(id));
-}
+  @UseGuards(AuthGuard, AdminGuard)
+  @Delete('/:id')
+  deleteUser(@Param('id') id: string) {
+    return this.service.removeUser(parseInt(id));
+  }
 
   @Delete() // DELETE http://localhost:3000/auth
   @UseGuards(AuthGuard,AdminGuard)
