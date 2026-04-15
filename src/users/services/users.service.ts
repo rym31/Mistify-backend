@@ -54,12 +54,12 @@ export class UsersService {
   }
 
   async removeAllUsers() {
-  const users = await this.repo.find();
+    const users = await this.repo.find();
 
-  if (users.length === 0) {
-    throw new NotFoundException('N0 users f0und');
+    if (users.length === 0) {
+      throw new NotFoundException('N0 users f0und');
+    }
+
+    return this.repo.remove(users);
   }
-
-  return this.repo.remove(users);
-}
 }

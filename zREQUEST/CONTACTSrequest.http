@@ -1,0 +1,11 @@
+### Contact
+POST http://localhost:3000/contacts
+Content-Type: application/json
+
+{
+    "nom": "Isabella Rossellini",
+    "email": "isabella@studio.com",
+    "type": "DEMANDE_GENERALE",
+    "message": "Test"
+}
+

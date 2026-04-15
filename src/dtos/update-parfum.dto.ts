@@ -21,4 +21,28 @@ export class UpdateParfumDto {
   @IsNumber()
   @IsOptional()
   price?: number;
+
+  @IsString()
+  @IsOptional()
+  country?: string;
+
+  @IsString()
+  @IsOptional()
+  gender?: string;
+
+  @IsNumber()
+  @IsOptional()
+  year?: number;
+
+  @IsString()
+  @IsOptional()
+  topNote?: string;
+
+  @IsString()
+  @IsOptional()
+  middleNote?: string;
+
+  @IsString()
+  @IsOptional()
+  baseNote?: string;
 }
