@@ -14,7 +14,7 @@ export class User {
   @Column()
   password: string;
 
-  @Column({default:false}) //A CHANGER
+  @Column({default:true}) //A CHANGER
   admin:boolean;
 
   @AfterInsert()

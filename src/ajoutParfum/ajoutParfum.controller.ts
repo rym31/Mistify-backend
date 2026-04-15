@@ -2,7 +2,6 @@ import { Controller, Param, Body, Post, UseGuards } from "@nestjs/common";
 import { AjoutParfumService } from "./ajoutParfum.service";
 import { CreateAjoutParfumDto } from "src/dtos/create-ajoutParfum.dto";
 import { AdminGuard } from "src/guards/admin.guards";
-import { AjoutParfum } from "./ajoutParfum.entity";
 
 @Controller('ajout')
 export class AjoutParfumController {
