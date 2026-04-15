@@ -20,4 +20,6 @@ export class AjoutParfumController {
         return await this.service.valider(+id);
     }
     
+    // il en manque CRUD entre autre et jai valider, mais
+    // jai vu que yen a dautre ils ont refuser et accepter....
 }

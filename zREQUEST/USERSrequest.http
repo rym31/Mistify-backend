@@ -61,9 +61,6 @@ Content-Type: application/json
 }
 
 
-
-
-
 ### cree user pas admin (change admin a true ou false dans user.entity)
 POST http://localhost:3000/auth/signup
 Content-Type: application/json

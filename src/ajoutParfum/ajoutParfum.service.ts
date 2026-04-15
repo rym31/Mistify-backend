@@ -24,6 +24,12 @@ export class AjoutParfumService {
             brand: demandeParfum.brand,
             description: demandeParfum.description,
             imageUrl: demandeParfum.imageUrl,
+            country: demandeParfum.country,
+            gender: demandeParfum.gender,
+            year: demandeParfum.year,
+            topNotes: demandeParfum.topNotes,
+            middleNotes: demandeParfum.middleNotes,
+            baseNotes: demandeParfum.baseNotes,
             price: demandeParfum.price
            });
 
@@ -33,8 +39,6 @@ export class AjoutParfumService {
 
         }
     }
-
-    exista
 
     // si ca existe, bah tu peux pas rajouter un avec les memes infos
     // delete all demande

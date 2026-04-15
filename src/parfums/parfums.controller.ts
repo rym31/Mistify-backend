@@ -1,7 +1,8 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Patch, Post, UseGuards } from '@nestjs/common';
 import { ParfumsService } from './parfums.service';
 import { CreateParfumDto } from '../dtos/create-parfum.dto';
 import { UpdateParfumDto } from '../dtos/update-parfum.dto';
+import { AdminGuard } from 'src/guards/admin.guards';
 
 @Controller('parfums')
 export class ParfumsController {
