@@ -31,8 +31,9 @@ export class AjoutParfumService {
 
            await this.repo.remove(demandeParfum);
 
-           return {message: "Parfum ajouté avec succès"};
-
         }
     }
+
+    // si ca existe, bah tu peux pas rajouter un avec les memes infos
+    // delete all demande
 }

@@ -19,7 +19,7 @@ export class AjoutParfum {
   @Column({ nullable: true })
   imageUrl?: string;
 
-  @Column({ type: 'float' })
+  @Column({ type: 'float', nullable: true})
   price?: number;
 
   @ManyToOne(() => User, { onDelete: 'CASCADE' })

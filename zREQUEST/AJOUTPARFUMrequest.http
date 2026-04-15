@@ -5,8 +5,9 @@ Content-Type: application/json
 {
     "name": "Fruité",
     "brand": "Caliente",
-    "userId": "userName"
+    "userId": 1,
+    "price": 124
 }
 
 ### ValiderParfum
-GET http://localhost:3000/ajout/newParfum
+POST  http://localhost:3000/ajout/newParfum/28
