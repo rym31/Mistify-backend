@@ -1,8 +1,12 @@
 ### AjoutParfum
-POST http://localhost:3000/ajout/ajouter
+POST http://localhost:3000/ajout/demandeParfum
 Content-Type: application/json
 
 {
     "name": "Fruité",
-    "brand": "Caliente"
+    "brand": "Caliente",
+    "userId": "userName"
 }
+
+### ValiderParfum
+GET http://localhost:3000/ajout/newParfum

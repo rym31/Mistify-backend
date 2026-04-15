@@ -9,4 +9,4 @@ import { AjoutParfum } from './ajoutParfum.entity';
   controllers: [AjoutParfumController],
   providers: [AjoutParfumService],
 })
-export class ParfumsModule {}
+export class AjoutParfumModule {}

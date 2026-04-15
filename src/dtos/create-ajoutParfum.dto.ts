@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsString } from 'class-validator';
+import { IsNotEmpty, IsString, IsOptional, IsUrl, IsNumber } from 'class-validator';
 
 export class CreateAjoutParfumDto {
 
@@ -11,6 +11,18 @@ export class CreateAjoutParfumDto {
   brand: string;
 
   @IsString()
+  @IsOptional()
+  description?: string;
+
+  @IsUrl()
+  @IsOptional()
+  imageUrl?: string;
+
+  @IsNumber()
+  @IsOptional()
+  price?: number;
+
   @IsNotEmpty()
-  userId: string;
+  userId: number;
+
 }

@@ -1,6 +1,8 @@
-import { Controller, Get, Body, Post } from "@nestjs/common";
+import { Controller, Get, Body, Post, UseGuards } from "@nestjs/common";
 import { AjoutParfumService } from "./ajoutParfum.service";
 import { CreateAjoutParfumDto } from "src/dtos/create-ajoutParfum.dto";
+import { AdminGuard } from "src/guards/admin.guards";
+import { AjoutParfum } from "./ajoutParfum.entity";
 
 @Controller('ajout')
 export class AjoutParfumController {
@@ -9,10 +11,15 @@ export class AjoutParfumController {
 
     // demande + validation
     // modif/ ajouter form -> BD
-    @Post()
+    @Post('/demandeParfum')
     async ajouterParfum(@Body() body: CreateAjoutParfumDto) {
-        console.log("here");
         return await this.service.ajouter(body);
-        
     }
+
+    @UseGuards(AdminGuard)
+    @Get('/newParfum')
+    async validerParfum(ajoutParfum: AjoutParfum) {
+        return await this.service.valider(ajoutParfum.id);
+    }
+    
 }
