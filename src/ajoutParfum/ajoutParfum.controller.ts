@@ -1,4 +1,4 @@
-import { Controller, Param, Body, Post, UseGuards } from "@nestjs/common";
+import { Controller, Param, Body, Post, UseGuards, Get } from "@nestjs/common";
 import { AjoutParfumService } from "./ajoutParfum.service";
 import { CreateAjoutParfumDto } from "src/dtos/create-ajoutParfum.dto";
 import { AdminGuard } from "src/guards/admin.guards";
@@ -19,7 +19,24 @@ export class AjoutParfumController {
     async validerParfum(@Param('id') id: string) {
         return await this.service.valider(+id);
     }
-    
+
+    @Get()
+    async findParfum(@Param('id') id : string) {
+        return await this.service.findById(+id);
+    }
+    @Post('/')
+    @Post('/:id')
+    supprimerParfum(@Param('id') id : string) {
+        return this.service.delete(+id);
+    }
+
+    @UseGuards(AdminGuard)
+    @Post('/supp/all')
+    supprimerAllParfums() {
+        return this.service.deleteAll();
+    }
+
+
     // il en manque CRUD entre autre et jai valider, mais
     // jai vu que yen a dautre ils ont refuser et accepter....
 }
