@@ -3,7 +3,7 @@
 GET http://localhost:3000/auth
  
 ### cree user (change admin a true ou false dans user.entity) (pas admin en bas)
-POST http://localhost:3000/auth/signup
+POST http://localhost:3000/users/signup
 Content-Type: application/json
 
 {

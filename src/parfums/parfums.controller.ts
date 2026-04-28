@@ -3,6 +3,7 @@ import { ParfumsService } from './parfums.service';
 import { CreateParfumDto } from '../dtos/create-parfum.dto';
 import { UpdateParfumDto } from '../dtos/update-parfum.dto';
 import { AdminGuard } from 'src/guards/admin.guards';
+import { AuthGuard } from 'src/guards/auth.guards';
 
 @Controller('parfums')
 export class ParfumsController {
@@ -32,7 +33,7 @@ export class ParfumsController {
   findOne(@Param('id') id: string) {
     return this.service.findOne(parseInt(id));
   }
-
+  @UseGuards(AuthGuard)
   @Post()
   create(@Body() body: CreateParfumDto) {
     return this.service.create(body);

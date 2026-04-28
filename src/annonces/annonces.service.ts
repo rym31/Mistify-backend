@@ -36,6 +36,10 @@ export class AnnoncesService {
     return this.repo.find({ relations: ['seller', 'parfum'] });
   }
 
+  // update()  {
+
+  // }
+
   async remove(id: number) {
     const annonce = await this.repo.findOne({ where: { id } });
     if (!annonce) throw new NotFoundException('ANNONCE N0T F0UND');
