@@ -13,5 +13,14 @@ Content-Type: application/json
 ### Get commentaires for parfum 2
 GET http://localhost:3000/parfums/2/commentaires
 
+### update commentaire
+PUT http://localhost:3000/commentaires/8
+Content-Type: application/json
+
+{
+  "content": "commentaire modifie",
+  "rating": 4
+}
+
 ### delete commentaire
 DELETE http://localhost:3000/commentaires/1

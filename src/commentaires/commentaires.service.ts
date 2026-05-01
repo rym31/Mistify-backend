@@ -32,6 +32,13 @@ export class CommentairesService {
     });
   }
 
+  async update(id: number, attrs: Partial<Commentaire>) {
+    const commentaire = await this.repo.findOne({ where: { id } });
+    if (!commentaire) throw new NotFoundException('Commentaire N0T F0UND!');
+    Object.assign(commentaire, attrs);
+    return this.repo.save(commentaire);
+  }
+
   async remove(id: number) {
     const commentaire = await this.repo.findOne({ where: { id } });
     if (!commentaire) throw new NotFoundException('Commentaire N0T F0UND!');
