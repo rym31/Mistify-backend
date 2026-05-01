@@ -12,15 +12,24 @@ import { AnnoncesModule } from './annonces/annonces.module';
 import { Annonce } from './annonces/annonce.entity';
 import { OffresModule } from './offres/offres.module';
 import { Offre } from './offres/offre.entity';
+import { PanierModule } from './panier/panier.module';
+import { Panier } from './panier/panier.entity';
 @Module({
-  imports: [TypeOrmModule.forRoot({
-    type:'sqlite',
-    database : 'db.sqlite',
-    entities : [User,Parfum, Commentaire,Annonce, Offre],
-    synchronize : true
-  }),UsersModule, ParfumsModule, CommentairesModule, AnnoncesModule, OffresModule],
-  controllers: [AppController, ],
+  imports: [
+    TypeOrmModule.forRoot({
+      type: 'sqlite',
+      database: 'db.sqlite',
+      entities: [User, Parfum, Commentaire, Annonce, Offre, Panier],
+      synchronize: true,
+    }),
+    UsersModule,
+    ParfumsModule,
+    CommentairesModule,
+    AnnoncesModule,
+    OffresModule,
+    PanierModule,
+  ],
+  controllers: [AppController],
   providers: [AppService],
 })
 export class AppModule {}
- 
