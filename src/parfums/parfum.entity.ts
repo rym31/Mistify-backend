@@ -15,28 +15,26 @@ export class Parfum {
   description?: string;
 
   @Column({ nullable: true })
-  imageUrl?: string;
+  family?: string;
+
+  @Column({ nullable: true })
+  rating?: number;
+
+  @Column({ nullable: true })
+  volume?: number;
 
   @Column({ type: 'float' })
   price?: number;
 
   @Column({ nullable: true })
-  country?: string;
-
-  @Column({ nullable: true })
   gender?: string;
-
+  
   @Column({ nullable: true, type: 'int' })
   year?: number;
 
   @Column({ nullable: true })
-  topNotes?: string;
-
+  disponibility?: boolean;
+  
   @Column({ nullable: true })
-  middleNotes?: string;
-
-  @Column({ nullable: true })
-  baseNotes?: string;
-
-
+  imageUrl?: string;
 }

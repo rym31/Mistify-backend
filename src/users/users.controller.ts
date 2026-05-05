@@ -10,18 +10,13 @@ import {
   Session,
 } from '@nestjs/common';
 
-<<<<<<< HEAD
-import { UsersService } from '../services/users.service';
-import { AuthService } from './auth.service';
-=======
-import { UsersService } from './services/users.service';
-import { AuthService } from './services/auth.service';
->>>>>>> dee21a8a646b9d51b06cc18cd1d0de6be3a2caaa
 import { CreateUserDto } from '../dtos/create-user.dto';
 import { UpdateUserDto } from '../dtos/update-user.dto';
 import { SigninDto } from '../dtos/signin.dto';
 import { AuthGuard } from 'src/guards/auth.guards';
 import { AdminGuard } from 'src/guards/admin.guards';
+import { UsersService } from './services/users.service';
+import { AuthService } from './services/auth.service';
 
 @Controller('users')
 export class UsersController {
@@ -42,6 +37,7 @@ export class UsersController {
       body.name,
       body.email,
       body.password,
+      body.preferencesOlfactives,
     );
 
     // stocker le user dans la session

@@ -4,16 +4,16 @@ import { TypeDemande } from '../contacts/contacts.entity';
 export class CreateContactDto {
   @IsString()
   @IsNotEmpty()
-  nom!: string;
+  nom: string;
 
   @IsEmail()
-  email!: string;
+  email: string;
 
   @IsEnum(TypeDemande)
   @IsOptional()
-  type?: TypeDemande;
+  type: TypeDemande;
 
   @IsString()
   @IsNotEmpty()
-  message!: string;
+  message: string;
 }

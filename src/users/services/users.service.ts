@@ -1,12 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-<<<<<<<< HEAD:src/services/users.service.ts
-import { User } from '../users/user.entity';
-========
 import { User } from '../user.entity';
-import { SearchUserParam } from 'src/utils/types';
->>>>>>>> dee21a8a646b9d51b06cc18cd1d0de6be3a2caaa:src/users/services/users.service.ts
 
 @Injectable()
 export class UsersService {
@@ -15,8 +10,8 @@ export class UsersService {
     private readonly repo: Repository<User>,
   ) {}
 
-  async create(name: string, email: string, password: string) {
-    const user = this.repo.create({name, email, password });
+  async create(name: string, email: string, password: string, preferencesOlfactives?: string) {
+    const user = this.repo.create({name, email, password, preferencesOlfactives });
     return this.repo.save(user);
   }
 

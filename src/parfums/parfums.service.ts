@@ -2,14 +2,20 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Parfum } from './parfum.entity';
+import { FamilleOlfactivesService } from 'src/familleOlfactives/familleOlfactives.service';
 
 @Injectable()
 export class ParfumsService {
-  constructor(@InjectRepository(Parfum) private repo: Repository<Parfum>) {}
+  constructor(
+    @InjectRepository(Parfum) private repo: Repository<Parfum>,
+    private familleOlfactivesService: FamilleOlfactivesService,
+  ) {}
 
-  create(attrs: Partial<Parfum>) {
+  async create(attrs: Partial<Parfum>) {
     const parfum = this.repo.create(attrs);
-    return this.repo.save(parfum);
+    const saved = await this.repo.save(parfum);
+    this.familleOlfactivesService.ajouterParfum(saved);
+    return saved;
   }
 
   findAll() {
