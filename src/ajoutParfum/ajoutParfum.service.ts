@@ -57,7 +57,7 @@ export class AjoutParfumService {
     }
 
     deleteAll() {
-        return this.repo.deleteAll();
+        return this.repo.clear();
     }
     
 

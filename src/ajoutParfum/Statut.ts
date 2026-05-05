@@ -1,5 +1,5 @@
 export enum Statut {
-    EN_ANTTENTE,
+    EN_ATTENTE,
     ACCEPTER,
     REFUSER
 }

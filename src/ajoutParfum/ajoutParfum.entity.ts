@@ -29,7 +29,7 @@ export class AjoutParfum {
   @Column({ nullable: true, type: 'int' })
   year?: number;
 
-  @Column({type: 'enum', enum: Statut, default: Statut.EN_ATENTE}) 
+  @Column({type: 'simple-enum', enum: Statut, default: Statut.EN_ATTENTE})
   statut: Statut;
   
   @ManyToOne(() => User, { onDelete: 'CASCADE' })

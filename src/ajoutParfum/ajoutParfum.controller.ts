@@ -2,6 +2,7 @@ import { Controller, Param, Body, Post, UseGuards, Get } from "@nestjs/common";
 import { AjoutParfumService } from "./ajoutParfum.service";
 import { CreateAjoutParfumDto } from "src/dtos/create-ajoutParfum.dto";
 import { AdminGuard } from "src/guards/admin.guards";
+import { Statut } from "./Statut";
 
 @Controller('ajout')
 export class AjoutParfumController {
@@ -16,8 +17,8 @@ export class AjoutParfumController {
 
     @UseGuards(AdminGuard)
     @Post('/newParfum/:id')
-    async validerParfum(@Param('id') id: string) {
-        return await this.service.valider(+id);
+    async validerParfum(@Param('id') id: string, @Body('statut') statut: Statut) {
+        return await this.service.valider(+id, statut);
     }
 
     @Get()
