@@ -25,6 +25,7 @@ export class UsersController {
     private authService: AuthService,
   ) {}
 
+  @UseGuards(AdminGuard)
   @Get() // GET http://localhost:3000/auth
   getUsers() {
     return this.service.findAllUsers();

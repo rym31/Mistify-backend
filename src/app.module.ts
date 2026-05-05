@@ -20,15 +20,31 @@ import { Notification } from './notification/notification.entity';
 import { NotificationModule } from './notification/notification.module';
 import { FamilleOlfactivesModule } from './familleOlfactives/familleOlfactives.module';
 import { FamilleOlfactives } from './familleOlfactives/familleOlfactive.entity';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
+
 @Module({
-  imports: [TypeOrmModule.forRoot({
-    type:'sqlite',
-    database : 'db.sqlite',
-    entities : [User,Parfum, Commentaire,Annonce, Offre, AjoutParfum, Contacts, Notification, FamilleOlfactives],
-    synchronize : true
-  }),UsersModule, ParfumsModule, CommentairesModule, AnnoncesModule, OffresModule, AjoutParfumModule, ContactsModule, NotificationModule, FamilleOlfactivesModule],
-  controllers: [AppController, ],
+  imports: [
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..', 'public'),
+    }),
+    TypeOrmModule.forRoot({
+      type: 'sqlite',
+      database: 'db.sqlite',
+      entities: [User, Parfum, Commentaire, Annonce, Offre, AjoutParfum, Contacts, Notification, FamilleOlfactives],
+      synchronize: true
+    }),
+    UsersModule,
+    ParfumsModule,
+    CommentairesModule,
+    AnnoncesModule,
+    OffresModule,
+    AjoutParfumModule,
+    ContactsModule,
+    NotificationModule,
+    FamilleOlfactivesModule,
+  ],
+  controllers: [AppController],
   providers: [AppService],
 })
 export class AppModule {}
- 

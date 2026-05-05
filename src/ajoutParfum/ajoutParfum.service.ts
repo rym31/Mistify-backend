@@ -1,4 +1,4 @@
-import { Injectable } from "@nestjs/common";
+import { Injectable, NotFoundException } from "@nestjs/common";
 import { AjoutParfum } from "./ajoutParfum.entity";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
@@ -18,24 +18,41 @@ export class AjoutParfumService {
     async valider(id : number) {
         const demandeParfum = await this.repo.findOne({where: {id}});
         
-        if(demandeParfum) {
-           const newParfum = this.repoParfum.create({
-            name: demandeParfum.name,
-            brand: demandeParfum.brand,
-            description: demandeParfum.description,
-            imageUrl: demandeParfum.imageUrl,
-            price: demandeParfum.price
-           });
+        if(demandeParfum ) {
 
-           await this.repoParfum.save(newParfum);
-
-           await this.repo.remove(demandeParfum);
-
-        }
+        } 
+            
     }
 
-    exista
+    async accept() {
+        return true;
+    }
+
+    async refuse() {
+        return false;
+    }
+    async findById(id : number) {
+        return await this.repo.findOne({where : {id}});
+    }
+
+    async update( id : number, attrs: Partial<Parfum>) {
+        const demandeParfum = await this.repo.findOne({where : {id}});
+
+        if(!demandeParfum) throw new NotFoundException('Demande de parfum not found'); {
+            Object.assign(demandeParfum, attrs);
+            return this.repo.save(demandeParfum);
+        }
+            
+        
+    }
+    delete(id : number) {
+        return this.repo.delete({id})
+    }
+
+    deleteAll() {
+        return this.repo.deleteAll();
+    }
+    
 
     // si ca existe, bah tu peux pas rajouter un avec les memes infos
-    // delete all demande
-}
+u}
