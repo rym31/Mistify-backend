@@ -1,4 +1,10 @@
-import { IsNotEmpty, IsString, IsOptional, IsNumber, IsUrl } from 'class-validator';
+import {
+  IsNotEmpty,
+  IsString,
+  IsOptional,
+  IsNumber,
+  IsUrl,
+} from 'class-validator';
 
 export class CreateParfumDto {
   @IsString()
@@ -17,13 +23,13 @@ export class CreateParfumDto {
   @IsOptional()
   imageUrl?: string;
 
-  @IsNumber()
-  @IsOptional()
-  price?: number;
-
   @IsString()
   @IsOptional()
   country?: string;
+
+  @IsNumber()
+  @IsOptional()
+  price?: number;
 
   @IsString()
   @IsOptional()
@@ -35,13 +41,13 @@ export class CreateParfumDto {
 
   @IsString()
   @IsOptional()
-  topNotes?: string;
+  topNote?: string;
 
   @IsString()
   @IsOptional()
-  middleNotes?: string;
+  middleNote?: string;
 
   @IsString()
   @IsOptional()
-  baseNotes?: string;
+  baseNote?: string;
 }

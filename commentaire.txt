@@ -1,0 +1,14 @@
+- Coder les filtres de recherhces de parfum
+- Avoir des routes pour les guards
+- Avoir une optimisation
+- Lancer des commentaires dans le code pour rajouter les fonctionnalités dans le code
+- Les notions vues dans le cours de Ghazi sont évalués dans l'entrevue du projet
+
+Sprint 2:
+- Cohésion de l'équipe
+- Code propre et fonctionnel
+- Avoir les pages 
+
+
+Rapport final:
+-Prendre le rapport de base et le modifier

@@ -1,7 +1,9 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Patch, Post, UseGuards } from '@nestjs/common';
 import { ParfumsService } from './parfums.service';
 import { CreateParfumDto } from '../dtos/create-parfum.dto';
 import { UpdateParfumDto } from '../dtos/update-parfum.dto';
+import { AdminGuard } from 'src/guards/admin.guards';
+import { AuthGuard } from 'src/guards/auth.guards';
 
 @Controller('parfums')
 export class ParfumsController {
@@ -12,11 +14,26 @@ export class ParfumsController {
     return this.service.findAll();
   }
 
+  @Get('/filter/gender/:gender')
+  filterByGender(@Param('gender') gender: string) {
+    return this.service.filterByGender(gender);
+  }
+
+  @Get('/filter/year/:year')
+  filterByYear(@Param('year') year: string) {
+    return this.service.filterByYear(parseInt(year));
+  }
+
+  @Get('/filter/price/:price')
+  filterByPrice(@Param('price') price: string) {
+    return this.service.filterByPrice(parseFloat(price));
+  }
+
   @Get('/:id')
   findOne(@Param('id') id: string) {
     return this.service.findOne(parseInt(id));
   }
-
+  @UseGuards(AuthGuard)
   @Post()
   create(@Body() body: CreateParfumDto) {
     return this.service.create(body);

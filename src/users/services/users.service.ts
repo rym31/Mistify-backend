@@ -1,7 +1,8 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { User } from './user.entity';
+import { User } from '../user.entity';
+import { SearchUserParam } from 'src/utils/types';
 
 @Injectable()
 export class UsersService {
@@ -15,7 +16,6 @@ export class UsersService {
     return this.repo.save(user);
   }
 
-
   async findAllUsersByEmail(email: string) {
     return this.repo.find({ where: { email } });
   }
@@ -23,6 +23,10 @@ export class UsersService {
   async findOne(id: number) {
     return this.repo.findOne({ where: { id } });
   }
+
+  // async findUser(params: SearchUserParam) {
+  //   return this.repo.findOneBy(params);
+  // }
 
   async findAllUsers() {
     return this.repo.find();
@@ -50,12 +54,12 @@ export class UsersService {
   }
 
   async removeAllUsers() {
-  const users = await this.repo.find();
+    const users = await this.repo.find();
 
-  if (users.length === 0) {
-    throw new NotFoundException('N0 users f0und');
+    if (users.length === 0) {
+      throw new NotFoundException('N0 users f0und');
+    }
+
+    return this.repo.remove(users);
   }
-
-  return this.repo.remove(users);
-}
 }

@@ -12,22 +12,31 @@ import { AnnoncesModule } from './annonces/annonces.module';
 import { Annonce } from './annonces/annonce.entity';
 import { OffresModule } from './offres/offres.module';
 import { Offre } from './offres/offre.entity';
-import { PanierModule } from './panier/panier.module';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
+import { ContactsModule } from './contacts/contacts.module';
+import { Contacts } from './contacts/contacts.entity';
 import { Panier } from './panier/panier.entity';
+import { PanierModule } from './panier/panier.module';
+
 @Module({
   imports: [
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..', 'public'),
+    }),
     TypeOrmModule.forRoot({
-      type: 'sqlite',
-      database: 'db.sqlite',
-      entities: [User, Parfum, Commentaire, Annonce, Offre, Panier],
-      synchronize: true,
+      type:'sqlite',
+      database : 'db.sqlite',
+      entities : [User,Parfum, Commentaire,Annonce, Offre, Contacts, Panier],
+      synchronize : true
     }),
     UsersModule,
     ParfumsModule,
     CommentairesModule,
     AnnoncesModule,
     OffresModule,
-    PanierModule,
+    ContactsModule,
+    PanierModule
   ],
   controllers: [AppController],
   providers: [AppService],
