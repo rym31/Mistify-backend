@@ -38,6 +38,7 @@ export class UsersController {
       body.name,
       body.email,
       body.password,
+      body.preferencesOlfactives,
     );
 
     // stocker le user dans la session

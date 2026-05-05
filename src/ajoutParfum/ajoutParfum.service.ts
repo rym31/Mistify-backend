@@ -35,6 +35,9 @@ export class AjoutParfumService {
         return this.valider(id, Statut.REFUSER);
     }
 
+    async refuse() {
+        return false;
+    }
     async findById(id : number) {
         return await this.repo.findOne({where : {id}});
     }

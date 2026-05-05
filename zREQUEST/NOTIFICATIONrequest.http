@@ -1,0 +1,36 @@
+POST http://localhost:3000/users/signup
+Content-Type: application/json
+
+{
+  "name": "Bob",
+  "email": "bob@test.com",
+  "password": "1234",
+  "preferencesOlfactives": "boisé"
+}
+
+
+POST http://localhost:3000/parfums
+Content-Type: application/json
+
+{
+  "name": "Rose Éternelle",
+  "brand": "Dior",
+  "family": "floral",
+  "price": 120
+}
+
+
+
+POST http://localhost:3000/parfums
+Content-Type: application/json
+
+{
+  "name": "Cèdre Noir",
+  "brand": "YSL",
+  "family": "boisé",
+  "price": 90
+}
+
+
+GET http://localhost:3000/notifications/user-notifications
+
