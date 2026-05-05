@@ -6,13 +6,13 @@ import {Statut} from "./Statut"
 export class AjoutParfum {
 
   @PrimaryGeneratedColumn()
-  id: number;
+  id!: number;
 
   @Column()
-  name: string;
+  name!: string;
 
   @Column()
-  brand: string;
+  brand!: string;
 
   @Column({ nullable: true }) //nullable = peut etre vide
   description?: string;
@@ -23,16 +23,19 @@ export class AjoutParfum {
   @Column({ type: 'float', nullable: true})
   price?: number;
 
+  @Column({ type: 'int' })
+  volume!: number;
+  
   @Column({ nullable: true })
   gender?: string;
 
   @Column({ nullable: true, type: 'int' })
   year?: number;
 
-  @Column({type: 'enum', enum: Statut, default: Statut.EN_ATENTE}) 
+  @Column({type: 'enum', enum: Statut, default: Statut.EN_ATTENTE}) 
   statut: Statut;
   
   @ManyToOne(() => User, { onDelete: 'CASCADE' })
-  user: User;
+  user!: User;
   
 }
