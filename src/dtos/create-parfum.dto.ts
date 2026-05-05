@@ -4,6 +4,7 @@ import {
   IsOptional,
   IsNumber,
   IsUrl,
+  IsBoolean,
 } from 'class-validator';
 
 export class CreateParfumDto {
@@ -19,13 +20,6 @@ export class CreateParfumDto {
   @IsOptional()
   description?: string;
 
-  @IsUrl()
-  @IsOptional()
-  imageUrl?: string;
-
-  @IsString()
-  @IsOptional()
-  country?: string;
 
   @IsNumber()
   @IsOptional()
@@ -35,19 +29,27 @@ export class CreateParfumDto {
   @IsOptional()
   gender?: string;
 
+  @IsString()
+  @IsOptional()
+  family?: string;
+
   @IsNumber()
   @IsOptional()
   year?: number;
 
-  @IsString()
+  @IsNumber()
   @IsOptional()
-  topNote?: string;
+  rating?: number;
 
-  @IsString()
+  @IsBoolean()
   @IsOptional()
-  middleNote?: string;
+  disponibility?: boolean;
 
-  @IsString()
+  @IsNumber()
   @IsOptional()
-  baseNote?: string;
+  volume?: number;
+
+  @IsUrl()
+  @IsOptional()
+  imageUrl?: string;
 }

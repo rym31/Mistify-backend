@@ -11,8 +11,8 @@ export class UsersService {
     private readonly repo: Repository<User>,
   ) {}
 
-  async create(name: string, email: string, password: string) {
-    const user = this.repo.create({name, email, password });
+  async create(name: string, email: string, password: string, preferencesOlfactives?: string) {
+    const user = this.repo.create({name, email, password, preferencesOlfactives });
     return this.repo.save(user);
   }
 
