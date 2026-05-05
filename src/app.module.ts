@@ -22,6 +22,8 @@ import { FamilleOlfactivesModule } from './familleOlfactives/familleOlfactives.m
 import { FamilleOlfactives } from './familleOlfactives/familleOlfactive.entity';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
+import { Panier } from './panier/panier.entity';
+import { PanierModule } from './panier/panier.module';
 
 @Module({
   imports: [
@@ -31,7 +33,7 @@ import { join } from 'path';
     TypeOrmModule.forRoot({
       type: 'sqlite',
       database: 'db.sqlite',
-      entities: [User, Parfum, Commentaire, Annonce, Offre, AjoutParfum, Contacts, Notification, FamilleOlfactives],
+      entities: [User, Parfum, Commentaire, Annonce, Offre, AjoutParfum, Contacts, Panier, Notification, FamilleOlfactives],
       synchronize: true
     }),
     UsersModule,
@@ -39,6 +41,8 @@ import { join } from 'path';
     CommentairesModule,
     AnnoncesModule,
     OffresModule,
+    ContactsModule,
+    PanierModule,
     AjoutParfumModule,
     ContactsModule,
     NotificationModule,

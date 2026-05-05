@@ -10,11 +10,11 @@ import {
 export class CreateParfumDto {
   @IsString()
   @IsNotEmpty()
-  name: string;
+  name!: string;
 
   @IsString()
   @IsNotEmpty()
-  brand: string;
+  brand!: string;
 
   @IsString()
   @IsOptional()
@@ -36,6 +36,8 @@ export class CreateParfumDto {
   @IsNumber()
   @IsOptional()
   year?: number;
+<<<<<<< HEAD
+=======
 
   @IsNumber()
   @IsOptional()
@@ -52,4 +54,5 @@ export class CreateParfumDto {
   @IsUrl()
   @IsOptional()
   imageUrl?: string;
+>>>>>>> e770081f8ad4e1dd51cc18934c86ff0ddece7de2
 }

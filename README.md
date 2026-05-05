@@ -1,3 +1,4 @@
+# Mistify Backend
 # huhhhh hello...!?
 
 
@@ -11,101 +12,199 @@ nest g controller
 nest g service users 
 # @yanis26x
 
-<div align="center">
+[ @yanis26x ](https://github.com/yanis26x)
+[ @el24s ](https://github.com/el24s)
+[ @rym31 ](https://github.com/rym31)
 
-<h1 align="center">y0 l3s fIlLeS ! mTn t0uT mArCh3 , c’E3T b0n !!</h1>
+Backend de l'application Mistify, une application React pour consulter et acheter des parfums.
 
-<H2 align="center">
-CONTINUEZ À CODER À PARTIR DE CE CODE  <br>
-QU'EST-CE QUE VOUS FEREZ SANS MOI S3RIEUX?!! <br>
-REMERCIEZ MOI SURTOUT PAS EIN! 
-  <h1>sI v0uS aVeZ dEs qUeStI0nS 0u jSp qU0i , 3cRiVeZ m0i @yanis26x</h1>
-</H2>
+Frontend : https://github.com/yanis26x/Mistify-frontend
 
-</div>
+## Installation
 
-## jai fait le frontend : https://github.com/yanis26x/Mistify-frontend
-### lanceZ le backend et le frontend enssemble et le frontend va marcher
-#### ALLEZ VOIR FRONTEND ET LIRE LE README 
-
-
-> ## Installation du projet!
-#### NaNa 0 HaTch1
 ```bash
-npm i
+npm install
 ```
-#### NaNa 0 HaTch1
-```bash
-npm install @nestjs/typeorm typeorm sqlite3
-
-npm install -g @nestjs/cli
-```
-#### Installer l’extension SQLite
-```
-dans VScode → SQLite
-publisher:"alexcvzz"
-```
-
-<h1 style="background-color:black; color:red; padding:20px;">
-put 'em on the news or somethin' (schyeah)
-</h1>
-
-> ## T0 0PEN DATABASE !
-### SUR MAC
-```
-SHIFT+CMD+P → SQLite: Open Database
-```
-Affichage → Palette de commandes(SHIFT+CMD+P) → SQLite: Open Database
-### SUR WINDOWS
-```
-CTRL+SHIFT+P → SQLite: Open Database
-```
-VIEW → command palette(CTRL+SHIFT+P) → SQLite: Open Database
-
-### ENSUITE :
-#### a la racine cree ce fichier
-```bash
-touch request.http
-```
-#### Installer l’extension REST Client
-```
-dans VScode → REST Client 
-publisher:"Huachao Mao"
-```
-
-<h1 style="background-color:black; color:red; padding:20px;">
-CHr0m3 H34rt n3Rd Gl4ss3s
-</h1>
-
-# Lancer le projet
+## Lancer le projet
 ```bash
 npm run start:dev
 ```
 
+## Stack ?
+- NestJS
+- TypeScript
+- TypeORM
+- SQLite
+- class-validator
+- cookie-session
 
-> ## Générer les modules NestJS
-#### Créer le module users :
+## Base de données
+Le projet utilise SQLite avec le fichier :
+```txt
+db.sqlite
+```
+
+
+Pour ouvrir la bd dans VS Code :
+
+
+1. Faire `Shift + Cmd + P` sur macOS, ou `Ctrl + Shift + P` sur Windows.
+2. Chercher `SQLite: Open Database`.
+3. Sélectionner `db.sqlite`.
+
+## Scripts utiles
+
+```bash
+npm run start:dev   # lance le serveur en mode watch
+npm run build       # compile le projet
+npm run test        # lance les tests unitaires
+npm run test:e2e    # lance les tests end-to-end
+npm run lint        # lance ESLint avec correction automatique
+npm run format      # formate le code avec Prettier
+```
+
+## Modules principaux
+
+- `auth` : inscription, connexion, session utilisateur et gestion des users.
+- `parfums` : catalogue des parfums.
+- `commentaires` : avis et notes sur les parfums.
+- `annonces` : annonces de vente.
+- `offres` : offres faites sur les annonces.
+- `panier` : panier utilisateur, protégé par session.
+
+## Routes principales
+
+### Auth
+
+```txt
+GET    /auth
+POST   /auth/signup
+POST   /auth/signin
+POST   /auth/signout
+GET    /auth/whoami
+GET    /auth/:id
+PATCH  /auth/:id
+DELETE /auth/:id
+DELETE /auth
+```
+
+### Parfums
+
+```txt
+GET    /parfums
+GET    /parfums/:id
+POST   /parfums
+PATCH  /parfums/:id
+DELETE /parfums/:id
+```
+
+Exemple de création :
+
+```json
+{
+  "name": "Sauvage",
+  "brand": "Dior",
+  "description": "Parfum frais et sauvage",
+  "imageUrl": "https://images.unsplash.com/photo-1594035910387-fea47794261f",
+  "price": 120,
+  "country": "France",
+  "gender": "Homme",
+  "year": 2015,
+  "topNotes": "Bergamote",
+  "middleNotes": "Poivre",
+  "baseNotes": "Ambroxan"
+}
+```
+
+### Commentaires
+
+```txt
+POST   /parfums/:parfumId/commentaires
+GET    /parfums/:parfumId/commentaires
+PUT    /commentaires/:id
+DELETE /commentaires/:id
+```
+
+### Annonces
+
+```txt
+GET    /annonces
+POST   /annonces
+DELETE /annonces/:id
+```
+
+### Offres
+
+```txt
+POST  /annonces/:annonceId/offres
+GET   /annonces/:annonceId/offres
+PATCH /offres/:id/accept
+PATCH /offres/:id/refuser
+```
+
+### Panier
+
+Ces routes demandent une session utilisateur connectée.
+
+```txt
+GET    /panier
+POST   /panier
+PATCH  /panier/:parfumId
+DELETE /panier/:parfumId
+DELETE /panier
+```
+
+Exemple pour ajouter un parfum au panier :
+
+```json
+{
+  "parfumId": 1,
+  "quantite": 2
+}
+```
+
+## Requêtes HTTP de test
+
+Des exemples de requêtes sont disponibles dans le dossier :
+
+```txt
+zREQUEST/
+```
+
+Tu peux les utiliser avec l'extension REST Client de VS Code.
+
+## Seed des parfums
+
+Le fichier `seedParfums.js` permet d'ajouter quelques parfums de test.
+
+Lance d'abord le serveur :
+
+```bash
+npm run start:dev
+```
+
+Puis, dans un autre terminal :
+
+```bash
+node seedParfums.js
+```
+
+## Commandes NestJS utiles
+
+Créer un module :
+
 ```bash
 nest g module users
 ```
-#### Créer le controller :
+
+Créer un controller :
+
 ```bash
 nest g controller users --no-spec
 ```
-#### Créer le service :
+
+Créer un service :
+
 ```bash
 nest g service users --no-spec
 ```
-
-
-
-<h1 style="background-color:black; color:red; padding:20px;">
-VaMP N1t3MaR3
-</h1>
-
-
-a installer ????
-```bash
-npm install cookie-session @types/cookie-session
-```
-# 120mg + painKillers -> doing nun
