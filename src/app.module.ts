@@ -12,10 +12,16 @@ import { AnnoncesModule } from './annonces/annonces.module';
 import { Annonce } from './annonces/annonce.entity';
 import { OffresModule } from './offres/offres.module';
 import { Offre } from './offres/offre.entity';
+import { AjoutParfum } from './ajoutParfum/ajoutParfum.entity';
+import { AjoutParfumModule } from './ajoutParfum/ajoutParfum.module';
+import { Contacts } from './contacts/contacts.entity';
+import { ContactsModule } from './contacts/contacts.module';
+import { Notification } from './notification/notification.entity';
+import { NotificationModule } from './notification/notification.module';
+import { FamilleOlfactivesModule } from './familleOlfactives/familleOlfactives.module';
+import { FamilleOlfactives } from './familleOlfactives/familleOlfactive.entity';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
-import { ContactsModule } from './contacts/contacts.module';
-import { Contacts } from './contacts/contacts.entity';
 import { Panier } from './panier/panier.entity';
 import { PanierModule } from './panier/panier.module';
 
@@ -25,10 +31,10 @@ import { PanierModule } from './panier/panier.module';
       rootPath: join(__dirname, '..', 'public'),
     }),
     TypeOrmModule.forRoot({
-      type:'sqlite',
-      database : 'db.sqlite',
-      entities : [User,Parfum, Commentaire,Annonce, Offre, Contacts, Panier],
-      synchronize : true
+      type: 'sqlite',
+      database: 'db.sqlite',
+      entities: [User, Parfum, Commentaire, Annonce, Offre, AjoutParfum, Contacts, Panier, Notification, FamilleOlfactives],
+      synchronize: true
     }),
     UsersModule,
     ParfumsModule,
@@ -36,7 +42,11 @@ import { PanierModule } from './panier/panier.module';
     AnnoncesModule,
     OffresModule,
     ContactsModule,
-    PanierModule
+    PanierModule,
+    AjoutParfumModule,
+    ContactsModule,
+    NotificationModule,
+    FamilleOlfactivesModule,
   ],
   controllers: [AppController],
   providers: [AppService],

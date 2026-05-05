@@ -1,13 +1,15 @@
-import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put, UseGuards } from '@nestjs/common';
 import { CommentairesService } from './commentaires.service';
 import { CreateCommentaireDto } from '../dtos/create-commentaire.dto';
 import { UpdateCommentaireDto } from '../dtos/update-commentaire.dto';
+import { AuthGuard } from 'src/guards/auth.guards';
 
 @Controller()
 export class CommentairesController {
   constructor(private service: CommentairesService) {}
 
   // POST /parfums/:parfumId/commentaires
+  @UseGuards(AuthGuard)
   @Post('parfums/:parfumId/commentaires')
   create(
     @Param('parfumId') parfumId: string,

@@ -1,5 +1,6 @@
 import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
 import { User } from 'src/users/user.entity';
+import {Statut} from "./Statut"
 
 @Entity()
 export class AjoutParfum {
@@ -30,6 +31,9 @@ export class AjoutParfum {
 
   @Column({ nullable: true, type: 'int' })
   year?: number;
+
+  @Column({type: 'enum', enum: Statut, default: Statut.EN_ATTENTE}) 
+  statut: Statut;
   
   @ManyToOne(() => User, { onDelete: 'CASCADE' })
   user!: User;

@@ -19,6 +19,9 @@ export class User {
   @Column({default:true}) //A CHANGER
   admin:boolean;
 
+  @Column({ nullable: true })
+  preferencesOlfactives?: string;
+
   @AfterInsert()
   logInsert() {
     console.log(`(・・?) Nouvel utilisateur ajouté w0w! ID: ${this.id}`);
