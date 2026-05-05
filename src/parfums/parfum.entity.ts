@@ -20,22 +20,13 @@ export class Parfum {
   @Column({ type: 'float' })
   price?: number;
 
-  @Column({ nullable: true })
-  country?: string;
-
+  @Column({ type: 'int' })
+  volume!: number;
+  
   @Column({ nullable: true })
   gender?: string;
 
   @Column({ nullable: true, type: 'int' })
   year?: number;
-
-  @Column({ nullable: true })
-  topNotes?: string;
-
-  @Column({ nullable: true })
-  middleNotes?: string;
-
-  @Column({ nullable: true })
-  baseNotes?: string;
 
 }

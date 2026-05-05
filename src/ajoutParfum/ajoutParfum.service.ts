@@ -18,28 +18,19 @@ export class AjoutParfumService {
     async valider(id : number) {
         const demandeParfum = await this.repo.findOne({where: {id}});
         
-        if(demandeParfum) {
-           const newParfum = this.repoParfum.create({
-            name: demandeParfum.name,
-            brand: demandeParfum.brand,
-            description: demandeParfum.description,
-            imageUrl: demandeParfum.imageUrl,
-            country: demandeParfum.country,
-            gender: demandeParfum.gender,
-            year: demandeParfum.year,
-            topNotes: demandeParfum.topNotes,
-            middleNotes: demandeParfum.middleNotes,
-            baseNotes: demandeParfum.baseNotes,
-            price: demandeParfum.price
-           });
+        if(demandeParfum ) {
 
-           await this.repoParfum.save(newParfum);
-
-           await this.repo.remove(demandeParfum);
-
-        }
+        } 
+            
     }
 
+    async accept() {
+        return true;
+    }
+
+    async refuse() {
+        return false;
+    }
     async findById(id : number) {
         return await this.repo.findOne({where : {id}});
     }
