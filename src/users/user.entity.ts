@@ -16,7 +16,7 @@ export class User {
   @Exclude()
   password: string;
 
-  @Column({default:true}) //A CHANGER
+  @Column({default: false}) //A CHANGER
   admin:boolean;
 
   @Column({ nullable: true })
