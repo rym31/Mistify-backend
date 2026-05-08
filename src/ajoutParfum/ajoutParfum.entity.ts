@@ -23,11 +23,14 @@ export class AjoutParfum {
   @Column({ type: 'float', nullable: true})
   price?: number;
 
-  @Column({ type: 'int' })
-  volume!: number;
+  @Column({ type: 'int', nullable: true })
+  volume?: number;
   
   @Column({ nullable: true })
   gender?: string;
+
+  @Column({ nullable: true })
+  family?: string;
 
   @Column({ nullable: true, type: 'int' })
   year?: number;

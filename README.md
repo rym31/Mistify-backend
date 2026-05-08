@@ -8,7 +8,6 @@ cree un projet nest
 nest g module users 
 nest g controller 
 nest g service users 
-# @yanis26x
 
 [ @yanis26x ](https://github.com/yanis26x)
 [ @el24s ](https://github.com/el24s)

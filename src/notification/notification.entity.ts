@@ -11,16 +11,21 @@ export class Notification {
   @ManyToOne(() => User)
   acheteur: User;
 
-  @ManyToOne(() => Parfum)
-  parfum: Parfum;
+  @ManyToOne(() => Parfum, { nullable: true })
+  parfum?: Parfum;
 
   @Column()
   contenu: string;
 
+  @Column({ nullable: true })
+  lien?: string;
+
+  @Column({ default: false })
+  lu: boolean;
+
   @CreateDateColumn()
   dateEnvoi: Date;
 }
-
 
 
 
