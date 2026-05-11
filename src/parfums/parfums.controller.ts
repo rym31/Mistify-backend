@@ -2,8 +2,8 @@ import { Body, Controller, Delete, Get, Param, Patch, Post, UseGuards } from '@n
 import { ParfumsService } from './parfums.service';
 import { CreateParfumDto } from '../dtos/create-parfum.dto';
 import { UpdateParfumDto } from '../dtos/update-parfum.dto';
-import { AdminGuard } from 'src/guards/admin.guards';
-import { AuthGuard } from 'src/guards/auth.guards';
+import { AdminGuard } from '../guards/admin.guards';
+import { AuthGuard } from '../guards/auth.guards';
 
 @Controller('parfums')
 export class ParfumsController {
@@ -33,17 +33,19 @@ export class ParfumsController {
   findOne(@Param('id') id: string) {
     return this.service.findOne(parseInt(id));
   }
-  @UseGuards(AuthGuard)
+  @UseGuards(AuthGuard, AdminGuard)
   @Post()
   create(@Body() body: CreateParfumDto) {
     return this.service.create(body);
   }
 
+  @UseGuards(AuthGuard, AdminGuard)
   @Patch('/:id')
   update(@Param('id') id: string, @Body() body: UpdateParfumDto) {
     return this.service.update(parseInt(id), body);
   }
 
+  @UseGuards(AuthGuard, AdminGuard)
   @Delete('/:id')
   remove(@Param('id') id: string) {
     return this.service.remove(parseInt(id));

@@ -2,12 +2,15 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Parfum } from './parfum.entity';
-import { FamilleOlfactivesService } from 'src/familleOlfactives/familleOlfactives.service';
+import { FamilleOlfactivesService } from '../familleOlfactives/familleOlfactives.service';
+import { Notification } from '../notification/notification.entity';
 
 @Injectable()
 export class ParfumsService {
   constructor(
     @InjectRepository(Parfum) private repo: Repository<Parfum>,
+    @InjectRepository(Notification)
+    private notificationRepo: Repository<Notification>,
     private familleOlfactivesService: FamilleOlfactivesService,
   ) {}
 
@@ -36,6 +39,12 @@ export class ParfumsService {
   async remove(id: number) {
     const parfum = await this.repo.findOne({ where: { id } });
     if (!parfum) throw new NotFoundException('Parfum not found');
+    await this.notificationRepo
+      .createQueryBuilder()
+      .update(Notification)
+      .set({ parfum: null })
+      .where('parfumId = :id', { id })
+      .execute();
     return this.repo.remove(parfum);
   }
 

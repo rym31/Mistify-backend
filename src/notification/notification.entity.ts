@@ -11,8 +11,8 @@ export class Notification {
   @ManyToOne(() => User)
   acheteur: User;
 
-  @ManyToOne(() => Parfum, { nullable: true })
-  parfum?: Parfum;
+  @ManyToOne(() => Parfum, { nullable: true, onDelete: 'SET NULL' })
+  parfum?: Parfum | null;
 
   @Column()
   contenu: string;
@@ -26,6 +26,5 @@ export class Notification {
   @CreateDateColumn()
   dateEnvoi: Date;
 }
-
 
 
