@@ -1,4 +1,4 @@
-import { IsOptional, IsString, IsNumber, IsUrl } from 'class-validator';
+import { IsBoolean, IsOptional, IsString, IsNumber } from 'class-validator';
 
 export class UpdateParfumDto {
 
@@ -14,7 +14,7 @@ export class UpdateParfumDto {
   @IsOptional()
   description?: string;
 
-  @IsUrl()
+  @IsString()
   @IsOptional()
   imageUrl?: string;
 
@@ -29,6 +29,18 @@ export class UpdateParfumDto {
   @IsString()
   @IsOptional()
   gender?: string;
+
+  @IsString()
+  @IsOptional()
+  family?: string;
+
+  @IsNumber()
+  @IsOptional()
+  volume?: number;
+
+  @IsBoolean()
+  @IsOptional()
+  disponibility?: boolean;
 
   @IsNumber()
   @IsOptional()
