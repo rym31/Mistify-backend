@@ -2,10 +2,10 @@ import { Injectable, NotFoundException } from "@nestjs/common";
 import { AjoutParfum } from "./ajoutParfum.entity";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
-import { CreateAjoutParfumDto } from "src/dtos/create-ajoutParfum.dto";
+import { CreateAjoutParfumDto } from "../dtos/create-ajoutParfum.dto";
 import { Statut } from "./Statut";
-import { Parfum } from "src/parfums/parfum.entity";
-import { NotificationService } from "src/notification/notification.service";
+import { Parfum } from "../parfums/parfum.entity";
+import { NotificationService } from "../notification/notification.service";
 
 @Injectable()
 export class AjoutParfumService {

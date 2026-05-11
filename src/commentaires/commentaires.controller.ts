@@ -2,7 +2,7 @@ import { Body, Controller, Delete, Get, Param, Post, Put, UseGuards } from '@nes
 import { CommentairesService } from './commentaires.service';
 import { CreateCommentaireDto } from '../dtos/create-commentaire.dto';
 import { UpdateCommentaireDto } from '../dtos/update-commentaire.dto';
-import { AuthGuard } from 'src/guards/auth.guards';
+import { AuthGuard } from '../guards/auth.guards';
 
 @Controller()
 export class CommentairesController {

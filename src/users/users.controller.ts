@@ -13,8 +13,8 @@ import {
 import { CreateUserDto } from '../dtos/create-user.dto';
 import { UpdateUserDto } from '../dtos/update-user.dto';
 import { SigninDto } from '../dtos/signin.dto';
-import { AuthGuard } from 'src/guards/auth.guards';
-import { AdminGuard } from 'src/guards/admin.guards';
+import { AuthGuard } from '../guards/auth.guards';
+import { AdminGuard } from '../guards/admin.guards';
 import { UsersService } from './services/users.service';
 import { AuthService } from './services/auth.service';
 

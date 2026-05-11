@@ -1,6 +1,6 @@
 import { Controller,Post,Get,Delete,Body,Param } from '@nestjs/common';
 import { FamilleOlfactivesService } from './familleOlfactives.service';
-import { CreateFamilleOlfactiveDto } from 'src/dtos/create-familleOlfactive.dto';
+import { CreateFamilleOlfactiveDto } from '../dtos/create-familleOlfactive.dto';
 
 @Controller('familleOlfactives')
 export class FamilleOlfactivesController {
@@ -18,5 +18,4 @@ export class FamilleOlfactivesController {
         }
 
     }
-
 

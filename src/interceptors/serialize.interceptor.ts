@@ -1,7 +1,7 @@
 import { NestInterceptor, UseInterceptors, ExecutionContext, CallHandler } from "@nestjs/common";
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
-import { UserDto } from "src/dtos/user.dto";
+import { UserDto } from "../dtos/user.dto";
 import { plainToClass } from "class-transformer";
 
 interface ClassConstructor {

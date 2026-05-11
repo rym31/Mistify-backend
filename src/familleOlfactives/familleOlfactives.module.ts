@@ -3,7 +3,7 @@ import { FamilleOlfactivesController } from './familleOlfactives.controller';
 import { FamilleOlfactives } from './familleOlfactive.entity';
 import { FamilleOlfactivesService } from './familleOlfactives.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { NotificationModule } from 'src/notification/notification.module';
+import { NotificationModule } from '../notification/notification.module';
 
 @Module({
   imports: [TypeOrmModule.forFeature([FamilleOlfactives]), NotificationModule],

@@ -8,14 +8,8 @@ import { ParfumsModule } from './parfums/parfums.module';
 import { Parfum } from './parfums/parfum.entity';
 import { CommentairesModule } from './commentaires/commentaires.module';
 import { Commentaire } from './commentaires/commentaire.entity';
-import { AnnoncesModule } from './annonces/annonces.module';
-import { Annonce } from './annonces/annonce.entity';
-import { OffresModule } from './offres/offres.module';
-import { Offre } from './offres/offre.entity';
 import { AjoutParfum } from './ajoutParfum/ajoutParfum.entity';
 import { AjoutParfumModule } from './ajoutParfum/ajoutParfum.module';
-import { Contacts } from './contacts/contacts.entity';
-import { ContactsModule } from './contacts/contacts.module';
 import { Notification } from './notification/notification.entity';
 import { NotificationModule } from './notification/notification.module';
 import { FamilleOlfactivesModule } from './familleOlfactives/familleOlfactives.module';
@@ -33,18 +27,14 @@ import { PanierModule } from './panier/panier.module';
     TypeOrmModule.forRoot({
       type: 'sqlite',
       database: 'db.sqlite',
-      entities: [User, Parfum, Commentaire, Annonce, Offre, AjoutParfum, Contacts, Panier, Notification, FamilleOlfactives],
+      entities: [User, Parfum, Commentaire, AjoutParfum, Panier, Notification, FamilleOlfactives],
       synchronize: true
     }),
     UsersModule,
     ParfumsModule,
     CommentairesModule,
-    AnnoncesModule,
-    OffresModule,
-    ContactsModule,
     PanierModule,
     AjoutParfumModule,
-    ContactsModule,
     NotificationModule,
     FamilleOlfactivesModule,
   ],

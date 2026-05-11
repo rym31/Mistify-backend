@@ -2,7 +2,7 @@ import { Controller, Delete, Get, MessageEvent, Param, Patch, Session, Sse, UseG
 import { NotificationService } from './notification.service';
 import { filter, map, Observable } from 'rxjs';
 import { UsersService } from '../users/services/users.service';
-import { AuthGuard } from 'src/guards/auth.guards';
+import { AuthGuard } from '../guards/auth.guards';
 
 @Controller('notifications')
 export class NotificationController {
