@@ -11,7 +11,7 @@ export class Notification {
   @ManyToOne(() => User)
   acheteur: User;
 
-  @ManyToOne(() => Parfum)
+  @ManyToOne(() => Parfum, { onDelete: 'CASCADE' })
   parfum: Parfum;
 
   @Column()

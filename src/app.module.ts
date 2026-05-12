@@ -20,13 +20,13 @@ import { Notification } from './notification/notification.entity';
 import { NotificationModule } from './notification/notification.module';
 import { FamilleOlfactivesModule } from './familleOlfactives/familleOlfactives.module';
 import { FamilleOlfactives } from './familleOlfactives/familleOlfactive.entity';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
 import { Panier } from './panier/panier.entity';
 import { PanierModule } from './panier/panier.module';
 import { Commande } from './commandes/commande.entity';
 import { CommandeItem } from './commandes/commande-item.entity';
 import { CommandesModule } from './commandes/commandes.module';
-import { ServeStaticModule } from '@nestjs/serve-static';
-import { join } from 'path';
 
 @Module({
   imports: [
@@ -47,11 +47,11 @@ import { join } from 'path';
     OffresModule,
     ContactsModule,
     PanierModule,
-    CommandesModule,
     AjoutParfumModule,
     ContactsModule,
     NotificationModule,
     FamilleOlfactivesModule,
+    CommandesModule,
   ],
   controllers: [AppController],
   providers: [AppService],

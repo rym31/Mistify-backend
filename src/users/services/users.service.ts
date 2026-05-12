@@ -2,7 +2,6 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { User } from '../user.entity';
-import { SearchUserParam } from 'src/utils/types';
 import { FamilleOlfactives } from 'src/familleOlfactives/familleOlfactive.entity';
 
 @Injectable()
@@ -30,42 +29,26 @@ export class UsersService {
     return this.repo.findOne({ where: { id } });
   }
 
-  // async findUser(params: SearchUserParam) {
-  //   return this.repo.findOneBy(params);
-  // }
-
   async findAllUsers() {
     return this.repo.find();
   }
 
   async updateUser(id: number, attrs: Partial<User>) {
     const user = await this.repo.findOne({ where: { id } });
-
-    if (!user) {
-      throw new NotFoundException('User n0t f0und....');
-    }
-
+    if (!user) throw new NotFoundException('User n0t f0und....');
     Object.assign(user, attrs);
     return this.repo.save(user);
   }
 
   async removeUser(id: number) {
     const user = await this.repo.findOne({ where: { id } });
-
-    if (!user) {
-      throw new NotFoundException('User n0t f0und....');
-    }
-
+    if (!user) throw new NotFoundException('User n0t f0und....');
     return this.repo.remove(user);
   }
 
   async removeAllUsers() {
     const users = await this.repo.find();
-
-    if (users.length === 0) {
-      throw new NotFoundException('N0 users f0und');
-    }
-
+    if (users.length === 0) throw new NotFoundException('N0 users f0und');
     return this.repo.remove(users);
   }
 }

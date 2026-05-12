@@ -1,16 +1,16 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { ILike, Repository } from 'typeorm';
 import { FamilleOlfactives } from './familleOlfactive.entity';
 import { Parfum } from '../parfums/parfum.entity';
-import {NotificationService} from '../notification/notification.service';   
-  
+import { NotificationService } from '../notification/notification.service';
+
 @Injectable()
 export class FamilleOlfactivesService {
   constructor(
     @InjectRepository(FamilleOlfactives) private repo: Repository<FamilleOlfactives>,
     private notificationService: NotificationService,
-  ) { 
+  ) {
     this.abonner(this.notificationService);
   }
 
@@ -30,7 +30,7 @@ export class FamilleOlfactivesService {
   }
 
   findByName(name: string) {
-    return this.repo.findOne({ where: { name } });
+    return this.repo.findOne({ where: { name: ILike(name) } });
   }
 
   abonner(observateur: any) {
@@ -46,6 +46,4 @@ export class FamilleOlfactivesService {
   async ajouterParfum(parfum: Parfum) {
     await this.notifier(parfum);
   }
-
 }
-

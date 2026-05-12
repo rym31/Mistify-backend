@@ -25,12 +25,12 @@ export class AjoutParfum {
 
   @Column({ type: 'int', nullable: true })
   volume?: number;
-  
-  @Column({ nullable: true })
-  gender?: string;
 
   @Column({ nullable: true })
   family?: string;
+
+  @Column({ nullable: true })
+  gender?: string;
 
   @Column({ nullable: true, type: 'int' })
   year?: number;

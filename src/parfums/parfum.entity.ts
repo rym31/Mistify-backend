@@ -15,7 +15,7 @@ export class Parfum {
   @Column({ nullable: true })
   description?: string;
 
-  @ManyToOne(() => FamilleOlfactives, (famille) => famille.parfums, { nullable: true, eager: true })
+  @ManyToOne(() => FamilleOlfactives, { nullable: true, eager: true })
   famille?: FamilleOlfactives;
 
   @Column({ nullable: true })

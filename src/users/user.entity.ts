@@ -17,7 +17,7 @@ export class User {
   @Exclude()
   password: string;
 
-  @Column({default:true})
+  @Column({ default: false })
   admin: boolean;
 
   @ManyToOne(() => FamilleOlfactives, { nullable: true, eager: true })
@@ -26,5 +26,5 @@ export class User {
   @AfterInsert()
   logInsert() {
     console.log(`(・・?) Nouvel utilisateur ajouté w0w! ID: ${this.id}`);
-}
+  }
 }

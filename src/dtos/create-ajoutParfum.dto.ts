@@ -14,14 +14,6 @@ export class CreateAjoutParfumDto {
   @IsOptional()
   description?: string;
 
-  @IsUrl()
-  @IsOptional()
-  imageUrl?: string;
-
-  @IsNumber()
-  @IsOptional()
-  price?: number;
-
   @IsString()
   @IsOptional()
   gender?: string;
@@ -30,13 +22,21 @@ export class CreateAjoutParfumDto {
   @IsOptional()
   family?: string;
 
+  @IsUrl()
+  @IsOptional()
+  imageUrl?: string;
+
   @IsNumber()
   @IsOptional()
-  year?: number;
+  price?: number;
 
   @IsNumber()
   @IsOptional()
   volume?: number;
+
+  @IsNumber()
+  @IsOptional()
+  year?: number;
 
   @IsNotEmpty()
   userId: number;

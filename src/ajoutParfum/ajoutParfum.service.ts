@@ -20,25 +20,17 @@ export class AjoutParfumService {
         return this.repo.save(parfum);
     }
 
-    async valider(id : number,statut : Statut ) {
-        const demandeParfum = await this.repo.findOne({where: {id}});
-
-        if(!demandeParfum) {
-            throw new NotFoundException('Demande de parfum introuvable');
-        }
-
+    async valider(id: number, statut: Statut) {
+        const demandeParfum = await this.repo.findOne({ where: { id } });
+        if (!demandeParfum) throw new NotFoundException('Demande de parfum introuvable');
         demandeParfum.statut = statut;
-
         return this.repo.save(demandeParfum);
     }
 
     async accepter(id: number) {
-        console.log('=== ACCEPTER DEMANDE', id);
         const demande = await this.repo.findOne({ where: { id } });
         if (!demande) throw new NotFoundException('Demande introuvable');
-        console.log('=== DEMANDE TROUVEE', demande.name, demande.family);
 
-        // Change le statut
         demande.statut = Statut.ACCEPTER;
         await this.repo.save(demande);
 
@@ -57,27 +49,24 @@ export class AjoutParfumService {
             year: demande.year,
             volume: demande.volume,
         });
+
         const saved = await this.parfumRepo.save(nouveauParfum);
-        console.log('=== PARFUM CREE EN DB', saved.id);
-
         const savedAvecFamille = await this.parfumRepo.findOne({ where: { id: saved.id } });
-
-        console.log('=== DECLENCHEMENT OBSERVER');
         await this.familleOlfactivesService.ajouterParfum(savedAvecFamille);
-        console.log('=== OBSERVER TERMINE');
 
         return savedAvecFamille;
     }
-    
-    async refuser(id : number) {
+
+    async refuser(id: number) {
         return this.valider(id, Statut.REFUSER);
     }
 
     async refuse() {
         return false;
     }
-    async findById(id : number) {
-        return await this.repo.findOne({where : {id}});
+
+    async findById(id: number) {
+        return await this.repo.findOne({ where: { id } });
     }
 
     async findEnAttente() {
@@ -88,24 +77,18 @@ export class AjoutParfumService {
         return this.repo.find();
     }
 
-    async update( id : number, attrs: Partial<Parfum>) {
-        const demandeParfum = await this.repo.findOne({where : {id}});
-
-        if(!demandeParfum) throw new NotFoundException('Demande de parfum not found'); {
-            Object.assign(demandeParfum, attrs);
-            return this.repo.save(demandeParfum);
-        }
-            
-        
+    async update(id: number, attrs: Partial<Parfum>) {
+        const demandeParfum = await this.repo.findOne({ where: { id } });
+        if (!demandeParfum) throw new NotFoundException('Demande de parfum not found');
+        Object.assign(demandeParfum, attrs);
+        return this.repo.save(demandeParfum);
     }
-    delete(id : number) {
-        return this.repo.delete({id})
+
+    delete(id: number) {
+        return this.repo.delete({ id });
     }
 
     deleteAll() {
         return this.repo.clear();
     }
-    
-
-    // si ca existe, bah tu peux pas rajouter un avec les memes infos
 }

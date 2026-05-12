@@ -5,10 +5,10 @@ import { UsersService } from '../users/services/users.service';
 
 @Controller('notifications')
 export class NotificationController {
-
-  constructor(private notificationService: NotificationService, private usersService: UsersService) {
-
-  }
+  constructor(
+    private notificationService: NotificationService,
+    private usersService: UsersService,
+  ) {}
 
   @Get('mes-notifications')
   async getMesNotifications(@Session() session: any) {
@@ -23,7 +23,6 @@ export class NotificationController {
   @Sse('notifications-parfums')
   async getNotificationsParfums(@Session() session: any): Promise<Observable<MessageEvent>> {
     const user = await this.usersService.findOne(session.userId);
-
     return this.notificationService.getFlux().pipe(
       filter(parfum => user?.preference?.id === parfum.famille?.id),
       map(parfum => ({

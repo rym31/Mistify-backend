@@ -7,52 +7,34 @@ import { Statut } from "./Statut";
 @Controller('ajout')
 export class AjoutParfumController {
 
-    constructor(private  service : AjoutParfumService) {}
+    constructor(private service: AjoutParfumService) {}
 
-    // demande + validation
     @Post('/demandeParfum')
     async ajouterParfum(@Body() body: CreateAjoutParfumDto) {
         return await this.service.ajouter(body);
     }
 
-    @UseGuards(AdminGuard)
-    @Post('/newParfum/:id')
-    async validerParfum(@Param('id') id: string, @Body('statut') statut: Statut) {
-        return await this.service.valider(+id, statut);
+    @Get('/demandes/en-attente')
+    async demandesEnAttente() {
+        return await this.service.findEnAttente();
     }
 
     @UseGuards(AdminGuard)
     @Post('/accepter/:id')
-    async accepterParfum(@Param('id') id: string) {
+    async accepterDemande(
+        @Param('id') id: string,
+        @Body('messageAdmin') messageAdmin: string,
+    ) {
         return await this.service.accepter(+id);
     }
 
     @UseGuards(AdminGuard)
     @Post('/refuser/:id')
-    async refuserParfum(@Param('id') id: string) {
+    async refuserDemande(
+        @Param('id') id: string,
+        @Body('messageAdmin') messageAdmin: string,
+    ) {
         return await this.service.refuser(+id);
-    }
-
-    @UseGuards(AdminGuard)
-    @Get('/demandes/en-attente')
-    async findEnAttente() {
-        return await this.service.findEnAttente();
-    }
-
-    @UseGuards(AdminGuard)
-    @Get('/demandes/all')
-    async findAll() {
-        return await this.service.findAll();
-    }
-
-    @Get()
-    async findParfum(@Param('id') id : string) {
-        return await this.service.findById(+id);
-    }
-    @Post('/')
-    @Post('/:id')
-    supprimerParfum(@Param('id') id : string) {
-        return this.service.delete(+id);
     }
 
     @UseGuards(AdminGuard)
@@ -60,8 +42,4 @@ export class AjoutParfumController {
     supprimerAllParfums() {
         return this.service.deleteAll();
     }
-
-
-    // il en manque CRUD entre autre et jai valider, mais
-    // jai vu que yen a dautre ils ont refuser et accepter....
 }

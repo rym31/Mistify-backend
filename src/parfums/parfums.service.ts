@@ -51,7 +51,7 @@ export class ParfumsService {
     return this.repo.find({ where: { famille: { name: ILike(family) } } });
   }
 
-  async filterByPrice(price: number){
+  async filterByPrice(price: number) {
     return this.repo.find({ where: { price } });
   }
 

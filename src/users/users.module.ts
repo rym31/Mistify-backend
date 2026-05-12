@@ -14,12 +14,9 @@ import { FamilleOlfactives } from 'src/familleOlfactives/familleOlfactive.entity
   exports: [UsersService],
 })
 export class UsersModule implements NestModule {
-
   configure(consumer: MiddlewareConsumer) {
     consumer
       .apply(CurrentUserMiddleware)
-      .forRoutes('*'); // a toutes les routes!
-
+      .forRoutes('*');
   }
-
 }
