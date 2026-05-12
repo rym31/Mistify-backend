@@ -1,5 +1,6 @@
-import {AfterInsert, Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
-import {Exclude } from 'class-transformer';
+import { AfterInsert, Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
+import { Exclude } from 'class-transformer';
+import { FamilleOlfactives } from '../familleOlfactives/familleOlfactive.entity';
 
 @Entity()
 export class User {
@@ -16,11 +17,11 @@ export class User {
   @Exclude()
   password: string;
 
-  @Column({default:true}) //A CHANGER
-  admin:boolean;
+  @Column({default:true})
+  admin: boolean;
 
-  @Column({ nullable: true })
-  preferencesOlfactives?: string;
+  @ManyToOne(() => FamilleOlfactives, { nullable: true, eager: true })
+  preference?: FamilleOlfactives;
 
   @AfterInsert()
   logInsert() {

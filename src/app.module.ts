@@ -20,20 +20,24 @@ import { Notification } from './notification/notification.entity';
 import { NotificationModule } from './notification/notification.module';
 import { FamilleOlfactivesModule } from './familleOlfactives/familleOlfactives.module';
 import { FamilleOlfactives } from './familleOlfactives/familleOlfactive.entity';
-import { ServeStaticModule } from '@nestjs/serve-static';
-import { join } from 'path';
 import { Panier } from './panier/panier.entity';
 import { PanierModule } from './panier/panier.module';
+import { Commande } from './commandes/commande.entity';
+import { CommandeItem } from './commandes/commande-item.entity';
+import { CommandesModule } from './commandes/commandes.module';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
 
 @Module({
   imports: [
     ServeStaticModule.forRoot({
-      rootPath: join(__dirname, '..', '..', 'public'),
+      rootPath: join(process.cwd(), 'public'),
+      serveStaticOptions: { index: false },
     }),
     TypeOrmModule.forRoot({
       type: 'sqlite',
       database: 'db.sqlite',
-      entities: [User, Parfum, Commentaire, Annonce, Offre, AjoutParfum, Contacts, Panier, Notification, FamilleOlfactives],
+      entities: [User, Parfum, Commentaire, Annonce, Offre, AjoutParfum, Contacts, Panier, Notification, FamilleOlfactives, Commande, CommandeItem],
       synchronize: true
     }),
     UsersModule,
@@ -43,6 +47,7 @@ import { PanierModule } from './panier/panier.module';
     OffresModule,
     ContactsModule,
     PanierModule,
+    CommandesModule,
     AjoutParfumModule,
     ContactsModule,
     NotificationModule,

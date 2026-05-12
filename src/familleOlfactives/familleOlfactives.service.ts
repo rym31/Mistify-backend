@@ -29,18 +29,22 @@ export class FamilleOlfactivesService {
     return this.repo.findOne({ where: { id } });
   }
 
+  findByName(name: string) {
+    return this.repo.findOne({ where: { name } });
+  }
+
   abonner(observateur: any) {
     this.observateurs.push(observateur);
   }
 
-  notifier(parfum: Parfum) {
+  async notifier(parfum: Parfum) {
     for (const observateur of this.observateurs) {
-      observateur.emettre(parfum);
+      await observateur.notifierUsersMatchants(parfum);
     }
   }
 
-  ajouterParfum(parfum: Parfum) {
-    this.notifier(parfum);
+  async ajouterParfum(parfum: Parfum) {
+    await this.notifier(parfum);
   }
 
 }

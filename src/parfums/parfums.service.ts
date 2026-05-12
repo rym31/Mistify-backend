@@ -1,6 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { Repository, ILike, LessThanOrEqual } from 'typeorm';
 import { Parfum } from './parfum.entity';
 import { FamilleOlfactivesService } from 'src/familleOlfactives/familleOlfactives.service';
 
@@ -46,8 +46,20 @@ export class ParfumsService {
   async filterByYear(year: number) {
     return this.repo.find({ where: { year } });
   }
-  
+
+  async filterByFamily(family: string) {
+    return this.repo.find({ where: { famille: { name: ILike(family) } } });
+  }
+
   async filterByPrice(price: number){
     return this.repo.find({ where: { price } });
+  }
+
+  async filterCombined(gender?: string, family?: string, prixMax?: number) {
+    const where: any = {};
+    if (gender) where.gender = gender;
+    if (family) where.famille = { name: ILike(family) };
+    if (prixMax) where.price = LessThanOrEqual(prixMax);
+    return this.repo.find({ where });
   }
 }

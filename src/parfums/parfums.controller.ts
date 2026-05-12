@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post, UseGuards } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Patch, Post, Query, UseGuards } from '@nestjs/common';
 import { ParfumsService } from './parfums.service';
 import { CreateParfumDto } from '../dtos/create-parfum.dto';
 import { UpdateParfumDto } from '../dtos/update-parfum.dto';
@@ -14,6 +14,15 @@ export class ParfumsController {
     return this.service.findAll();
   }
 
+  @Get('/filter')
+  filterCombined(
+    @Query('gender') gender?: string,
+    @Query('family') family?: string,
+    @Query('prixMax') prixMax?: string,
+  ) {
+    return this.service.filterCombined(gender, family, prixMax ? parseFloat(prixMax) : undefined);
+  }
+
   @Get('/filter/gender/:gender')
   filterByGender(@Param('gender') gender: string) {
     return this.service.filterByGender(gender);
@@ -22,6 +31,11 @@ export class ParfumsController {
   @Get('/filter/year/:year')
   filterByYear(@Param('year') year: string) {
     return this.service.filterByYear(parseInt(year));
+  }
+
+  @Get('/filter/family/:family')
+  filterByFamily(@Param('family') family: string) {
+    return this.service.filterByFamily(family);
   }
 
   @Get('/filter/price/:price')

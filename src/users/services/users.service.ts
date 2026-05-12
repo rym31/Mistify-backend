@@ -3,16 +3,22 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { User } from '../user.entity';
 import { SearchUserParam } from 'src/utils/types';
+import { FamilleOlfactives } from 'src/familleOlfactives/familleOlfactive.entity';
 
 @Injectable()
 export class UsersService {
   constructor(
     @InjectRepository(User)
     private readonly repo: Repository<User>,
+    @InjectRepository(FamilleOlfactives)
+    private readonly familleRepo: Repository<FamilleOlfactives>,
   ) {}
 
   async create(name: string, email: string, password: string, preferencesOlfactives?: string) {
-    const user = this.repo.create({name, email, password, preferencesOlfactives });
+    const preference = preferencesOlfactives
+      ? await this.familleRepo.findOne({ where: { name: preferencesOlfactives } })
+      : null;
+    const user = this.repo.create({ name, email, password, preference: preference ?? undefined });
     return this.repo.save(user);
   }
 

@@ -21,6 +21,30 @@ export class AjoutParfumController {
         return await this.service.valider(+id, statut);
     }
 
+    @UseGuards(AdminGuard)
+    @Post('/accepter/:id')
+    async accepterParfum(@Param('id') id: string) {
+        return await this.service.accepter(+id);
+    }
+
+    @UseGuards(AdminGuard)
+    @Post('/refuser/:id')
+    async refuserParfum(@Param('id') id: string) {
+        return await this.service.refuser(+id);
+    }
+
+    @UseGuards(AdminGuard)
+    @Get('/demandes/en-attente')
+    async findEnAttente() {
+        return await this.service.findEnAttente();
+    }
+
+    @UseGuards(AdminGuard)
+    @Get('/demandes/all')
+    async findAll() {
+        return await this.service.findAll();
+    }
+
     @Get()
     async findParfum(@Param('id') id : string) {
         return await this.service.findById(+id);

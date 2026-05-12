@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
+import { FamilleOlfactives } from '../familleOlfactives/familleOlfactive.entity';
 
 @Entity()
 export class Parfum {
@@ -14,8 +15,8 @@ export class Parfum {
   @Column({ nullable: true })
   description?: string;
 
-  @Column({ nullable: true })
-  family?: string;
+  @ManyToOne(() => FamilleOlfactives, (famille) => famille.parfums, { nullable: true, eager: true })
+  famille?: FamilleOlfactives;
 
   @Column({ nullable: true })
   rating?: number;
@@ -23,7 +24,7 @@ export class Parfum {
   @Column({ nullable: true })
   volume?: number;
 
-  @Column({ type: 'float' })
+  @Column({ type: 'float', nullable: true })
   price?: number;
 
   @Column({ nullable: true })

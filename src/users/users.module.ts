@@ -5,9 +5,10 @@ import { User } from './user.entity';
 import { AuthService } from './services/auth.service';
 import { CurrentUserMiddleware } from 'src/middleware/current-user.middleware';
 import { UsersService } from './services/users.service';
+import { FamilleOlfactives } from 'src/familleOlfactives/familleOlfactive.entity';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([User])],
+  imports: [TypeOrmModule.forFeature([User, FamilleOlfactives])],
   providers: [UsersService, AuthService],
   controllers: [UsersController],
   exports: [UsersService],

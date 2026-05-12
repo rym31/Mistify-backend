@@ -5,10 +5,15 @@ import { Repository } from "typeorm";
 import { CreateAjoutParfumDto } from "src/dtos/create-ajoutParfum.dto";
 import { Statut } from "./Statut";
 import { Parfum } from "src/parfums/parfum.entity";
+import { FamilleOlfactivesService } from "src/familleOlfactives/familleOlfactives.service";
 
 @Injectable()
 export class AjoutParfumService {
-    constructor(@InjectRepository (AjoutParfum) private repo : Repository<AjoutParfum>){}
+    constructor(
+        @InjectRepository(AjoutParfum) private repo: Repository<AjoutParfum>,
+        @InjectRepository(Parfum) private parfumRepo: Repository<Parfum>,
+        private familleOlfactivesService: FamilleOlfactivesService,
+    ) {}
 
     ajouter(createAjoutParfum: CreateAjoutParfumDto) {
         const parfum = this.repo.create(createAjoutParfum);
@@ -17,7 +22,7 @@ export class AjoutParfumService {
 
     async valider(id : number,statut : Statut ) {
         const demandeParfum = await this.repo.findOne({where: {id}});
-        
+
         if(!demandeParfum) {
             throw new NotFoundException('Demande de parfum introuvable');
         }
@@ -27,8 +32,41 @@ export class AjoutParfumService {
         return this.repo.save(demandeParfum);
     }
 
-    async accepter(id : number) {
-        return this.valider(id, Statut.ACCEPTER);
+    async accepter(id: number) {
+        console.log('=== ACCEPTER DEMANDE', id);
+        const demande = await this.repo.findOne({ where: { id } });
+        if (!demande) throw new NotFoundException('Demande introuvable');
+        console.log('=== DEMANDE TROUVEE', demande.name, demande.family);
+
+        // Change le statut
+        demande.statut = Statut.ACCEPTER;
+        await this.repo.save(demande);
+
+        const famille = demande.family
+            ? await this.familleOlfactivesService.findByName(demande.family)
+            : null;
+
+        const nouveauParfum = this.parfumRepo.create({
+            name: demande.name,
+            brand: demande.brand,
+            description: demande.description,
+            imageUrl: demande.imageUrl,
+            price: demande.price,
+            gender: demande.gender,
+            famille: famille ?? undefined,
+            year: demande.year,
+            volume: demande.volume,
+        });
+        const saved = await this.parfumRepo.save(nouveauParfum);
+        console.log('=== PARFUM CREE EN DB', saved.id);
+
+        const savedAvecFamille = await this.parfumRepo.findOne({ where: { id: saved.id } });
+
+        console.log('=== DECLENCHEMENT OBSERVER');
+        await this.familleOlfactivesService.ajouterParfum(savedAvecFamille);
+        console.log('=== OBSERVER TERMINE');
+
+        return savedAvecFamille;
     }
     
     async refuser(id : number) {
@@ -40,6 +78,14 @@ export class AjoutParfumService {
     }
     async findById(id : number) {
         return await this.repo.findOne({where : {id}});
+    }
+
+    async findEnAttente() {
+        return this.repo.find({ where: { statut: Statut.EN_ATTENTE } });
+    }
+
+    async findAll() {
+        return this.repo.find();
     }
 
     async update( id : number, attrs: Partial<Parfum>) {
