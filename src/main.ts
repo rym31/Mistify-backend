@@ -14,6 +14,8 @@ async function bootstrap() {
     }),
   );
 
+  app.setGlobalPrefix("/api")
+  
   app.use(
     cookieSession({
       keys: ['super-secret-key'], //??????????
