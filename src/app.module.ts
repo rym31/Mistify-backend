@@ -42,7 +42,6 @@ import { CommandesModule } from './commandes/commandes.module';
     ContactsModule,
     PanierModule,
     AjoutParfumModule,
-    ContactsModule,
     NotificationModule,
     FamilleOlfactivesModule,
     CommandesModule,
