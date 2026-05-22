@@ -30,11 +30,24 @@ import { CommandesModule } from './commandes/commandes.module';
       rootPath: join(process.cwd(), 'public'),
       serveStaticOptions: { index: false },
     }),
-    TypeOrmModule.forRoot({
-      type: 'sqlite',
-      database: 'db.sqlite',
-      entities: [User, Parfum, Commentaire, AjoutParfum, Contacts, Panier, Notification, FamilleOlfactives, Commande, CommandeItem],
-      synchronize: true
+    ConfigModule.forRoot({
+      isGlobal: true,
+    }),
+    TypeOrmModule.forRootAsync({
+      imports: [ConfigModule],
+      useFactory: (config: ConfigService) => ({
+        type: 'mysql',
+        host: config.get('DB_HOST', 'localhost'),
+        port: config.get<number>('DB_PORT', 3306),
+        username: config.get('DB_USER', 'mistify_user'),
+        password: config.get('DB_PASSWORD', ''),
+        database: config.get('DB_NAME', 'mistify_db'),
+        autoLoadEntities: true,
+        synchronize: true,
+        entities: [User, Parfum, Commentaire, Annonce, Offre, AjoutParfum, Contacts, Panier, Notification, FamilleOlfactives, Commande, CommandeItem],
+        // logging: config.get('NODE_ENV') !== 'production',
+      }),
+      inject: [ConfigService],
     }),
     UsersModule,
     ParfumsModule,
