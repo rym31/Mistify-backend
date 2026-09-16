@@ -52,3 +52,7 @@ Thumbs.db
 .cache/
 .turbo/
 *.pid
+
+# Base de donnees locale (regeneree via TypeORM synchronize + seed au demarrage)
+db.sqlite
+db.sqlite-journal
