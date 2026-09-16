@@ -7,6 +7,7 @@ RUN npm install
 
 COPY . .
 RUN npm run build --omit dev
+RUN npm run seed
 
 EXPOSE 3000
 
